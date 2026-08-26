@@ -4,21 +4,24 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Dreamlight Guide">
-<meta name="theme-color" content="#7055a8">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%237055a8'/%3E%3Ctext x='50' y='66' font-size='55' text-anchor='middle'%3E%F0%9F%90%BF%3C/text%3E%3C/svg%3E">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%237055a8'/%3E%3Ctext x='50' y='66' font-size='55' text-anchor='middle'%3E%F0%9F%90%BF%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#b06fd6">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23b06fd6'/%3E%3Ctext x='50' y='66' font-size='55' text-anchor='middle'%3E%F0%9F%90%BF%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23b06fd6'/%3E%3Ctext x='50' y='66' font-size='55' text-anchor='middle'%3E%F0%9F%90%BF%3C/text%3E%3C/svg%3E">
 <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Heikes%20Dreamlight%20Guide%22%2C%22short_name%22%3A%22Dreamlight%20Guide%22%2C%22display%22%3A%22standalone%22%2C%22start_url%22%3A%22.%22%2C%22background_color%22%3A%22%23f5f1ff%22%2C%22theme_color%22%3A%22%237055a8%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%2527http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%2527%2520viewBox%3D%25270%25200%2520100%2520100%2527%253E%253Crect%2520width%3D%2527100%2527%2520height%3D%2527100%2527%2520rx%3D%252720%2527%2520fill%3D%2527%25237055a8%2527%252F%253E%253Ctext%2520x%3D%252750%2527%2520y%3D%252766%2527%2520font-size%3D%252755%2527%2520text-anchor%3D%2527middle%2527%253E%25F0%259F%2590%25BF%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 <title>Heikes Dreamlight Guide V2.7</title>
 <style>
-:root{--bg:#f5f1ff;--ink:#251d35;--vio:#7055a8;--card:#fff;--soft:#eee8ff;--muted:#675f72;--ok:#e0f5e2}
-*{box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;margin:0;background:var(--bg);color:var(--ink)}
+:root{--bg:#fdf3fa;--ink:#3a2c4d;--vio:#b06fd6;--vio2:#f7a8c4;--card:#fff;--soft:#f3e3fb;--muted:#7a6b8c;--ok:#d8f5e0;--gold:#f0c25e}
+*{box-sizing:border-box}body{font-family:'Fredoka',system-ui,-apple-system,sans-serif;margin:0;background:radial-gradient(circle at 15% 8%, #fce9f7 0%, transparent 45%),radial-gradient(circle at 90% 25%, #e6f0ff 0%, transparent 40%),var(--bg);color:var(--ink)}
 .stickytop{position:sticky;top:0;z-index:4}
-header{padding:18px 16px;background:linear-gradient(135deg,#7055a8,#9c72c7);color:white}header h1{margin:0;font-size:1.35rem}header small{opacity:.9}
-nav{display:flex;gap:7px;overflow:auto;padding:10px 12px;background:#fff;border-bottom:1px solid #ddd}nav button{white-space:nowrap}
-main{max-width:1050px;margin:auto;padding:12px}button,select,input{font:inherit;padding:10px;border:1px solid #d3cce0;border-radius:11px;background:white}button{cursor:pointer}button.active{background:var(--vio);color:#fff;border-color:var(--vio)}
-.panel,.card{background:var(--card);border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 2px 10px #00000010}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:9px}
-.tag{display:inline-block;background:var(--soft);border-radius:999px;padding:4px 8px;margin:2px;font-size:.82rem}.name{font-weight:800;font-size:1.05rem}.muted{color:var(--muted);font-size:.9rem}.owned{opacity:.5}.yes{background:var(--ok)}.warn{background:#fff7dc;border:1px solid #ead38a;padding:10px;border-radius:12px}.hidden{display:none}.count{font-weight:800;color:var(--vio)}table{width:100%;border-collapse:collapse}td,th{padding:8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
-.progresswrap{background:var(--soft);border-radius:999px;height:10px;overflow:hidden;margin:6px 0}.progressbar{background:var(--vio);height:100%}
+header{padding:20px 16px;background:linear-gradient(135deg,var(--vio),var(--vio2));color:white;position:relative;overflow:hidden}header::after{content:"✨";position:absolute;top:10px;right:18px;font-size:1.4rem;opacity:.8}header::before{content:"✨";position:absolute;bottom:6px;left:60%;font-size:.9rem;opacity:.6}header h1{margin:0;font-size:1.4rem;font-weight:700}header small{opacity:.95}
+nav{display:flex;gap:7px;overflow:auto;padding:10px 12px;background:#fff;border-bottom:2px solid var(--soft)}nav button{white-space:nowrap;border-radius:999px}
+main{max-width:1050px;margin:auto;padding:12px}button,select,input{font:inherit;padding:10px;border:1.5px solid var(--soft);border-radius:14px;background:white;font-weight:500}button{cursor:pointer;transition:transform .12s}button:active{transform:scale(.96)}button.active{background:linear-gradient(135deg,var(--vio),var(--vio2));color:#fff;border-color:var(--vio);box-shadow:0 2px 8px #b06fd655}
+.panel,.card{background:var(--card);border-radius:20px;padding:14px;margin:10px 0;box-shadow:0 3px 14px #b06fd61a;border:1px solid #f3e3fb}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:9px}
+.tag{display:inline-block;background:var(--soft);color:var(--vio);border-radius:999px;padding:4px 10px;margin:2px;font-size:.82rem;font-weight:500}.name{font-weight:700;font-size:1.08rem}.muted{color:var(--muted);font-size:.9rem}.owned{opacity:.5}.yes{background:var(--ok)}.warn{background:#fff7dc;border:1px solid #ead38a;padding:10px;border-radius:14px}.hidden{display:none}.count{font-weight:700;color:var(--vio)}table{width:100%;border-collapse:collapse}td,th{padding:8px;border-bottom:1px solid #f3e3fb;text-align:left;vertical-align:top}
+.progresswrap{background:var(--soft);border-radius:999px;height:10px;overflow:hidden;margin:6px 0}.progressbar{background:linear-gradient(90deg,var(--vio),var(--vio2));height:100%}
 </style></head>
 <body><div class="stickytop"><header><h1>Heikes Dreamlight Guide</h1><small>Master-App V2.7 · 488 Rezepte · lokal speicherbar · Sammelstand bleibt auf diesem Gerät</small></header>
 <nav>
