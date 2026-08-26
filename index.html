@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -9,27 +9,140 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Crect%20width%3D%27100%27%20height%3D%27100%27%20rx%3D%2720%27%20fill%3D%27%238a9a7e%27/%3E%3Ctext%20x%3D%2750%27%20y%3D%2766%27%20font-size%3D%2755%27%20text-anchor%3D%27middle%27%3E%F0%9F%90%BF%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%20%22Dreamlight%20Guide%22%2C%20%22short_name%22%3A%20%22Dreamlight%20Guide%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22background_color%22%3A%20%22%23f6f1e6%22%2C%20%22theme_color%22%3A%20%22%238a9a7e%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22data%3Aimage/svg%2Bxml%2C%253Csvg%2520xmlns%253D%2527http%253A//www.w3.org/2000/svg%2527%2520viewBox%253D%25270%25200%2520100%2520100%2527%253E%253Crect%2520width%253D%2527100%2527%2520height%253D%2527100%2527%2520rx%253D%252720%2527%2520fill%253D%2527%25238a9a7e%2527/%253E%253Ctext%2520x%253D%252750%2527%2520y%253D%252766%2527%2520font-size%253D%252755%2527%2520text-anchor%253D%2527middle%2527%253E%25F0%259F%2590%25BF%25EF%25B8%258F%253C/text%253E%253C/svg%253E%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image/svg%2Bxml%22%7D%5D%7D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<title>Dreamlight Guide V3.2</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* devanagari */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("1b09a772-66d7-4a6e-8bd6-59d9c1f38cc7") format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("7594f899-1018-4545-b850-3b3342ac8708") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("4c72c147-d34f-413e-97a3-ef309b1c0c6e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("9d7e46fd-5029-40af-a041-ed8ad733bc55") format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fc3682e6-bc27-4461-8bc6-1b8b871727e5") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("03214137-b48e-4967-a24c-541e8ad64aa3") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("97972e81-df8c-4941-bb02-6cc0bdd6c5d9") format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("4b9d4da5-5fa8-4718-b6e8-3a9bfe7357bb") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("77658659-be1b-465b-a96c-0b157862b075") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("dc12daf6-4c13-4a63-96bc-8e17c04f5032") format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("85a9a735-a985-40a5-892e-4a8fe1eac2be") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("3e288d7f-f27f-4acc-b5b1-84a4d7cc8f30") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<title>Dreamlight Guide V3.4</title>
+
 <style>
-:root{--bg:#f6f1e6;--ink:#3a352c;--vio:#8a9a7e;--vio2:#a8b89c;--card:#fffdf8;--soft:#ebe6d6;--muted:#8b8474;--ok:#e3ecdc}
+:root{--bg:#f6f1e6;--ink:#3a352c;--vio:#8a9a7e;--vio2:#a8b89c;--card:#fffdf8;--soft:#ebe6d6;--muted:#8b8474;--ok:#e3ecdc;--accink:#5f6b53}
+html[data-theme="dark"]{--bg:#20211d;--ink:#ece7dc;--vio:#93a487;--vio2:#a8b89c;--card:#2a2c26;--soft:#3a3d34;--muted:#9d978a;--ok:#3c4a37;--accink:#b9c7a9}
+:focus-visible{outline:2px solid var(--vio);outline-offset:2px}
+.tag.neutral{background:var(--soft);color:var(--muted)}
+nav button.needsbackup::after{content:'';display:inline-block;width:7px;height:7px;border-radius:999px;background:#c9773f;margin-left:6px;vertical-align:2px}
 *{box-sizing:border-box}body{font-family:'Poppins',system-ui,-apple-system,sans-serif;margin:0;background:var(--bg);color:var(--ink)}
 .stickytop{position:sticky;top:0;z-index:4}
 header{padding:18px 16px;background:linear-gradient(135deg,#8a9a7e,#c9c0a3);color:white}header h1{margin:0;font-size:1.35rem;font-weight:600}header small{opacity:.9}
-nav{display:flex;gap:7px;overflow:auto;padding:10px 12px;background:#fff;border-bottom:1px solid #f2eee0}nav button{white-space:nowrap}
-main{max-width:1050px;margin:auto;padding:12px}button,select,input{font:inherit;padding:10px;border:1px solid #efeadb;border-radius:11px;background:white;transition:transform .1s,background .15s}button{cursor:pointer}button:active{transform:scale(.97)}button.active{background:var(--vio);color:#fff;border-color:var(--vio)}
+nav{display:flex;gap:7px;overflow:auto;padding:10px 12px;background:var(--card);border-bottom:1px solid var(--soft)}nav button{white-space:nowrap}
+main{max-width:1050px;margin:auto;padding:12px}button,select,input{font:inherit;color:inherit;padding:10px;border:1px solid var(--soft);border-radius:11px;background:var(--card);transition:transform .1s,background .15s}button{cursor:pointer}button:active{transform:scale(.97)}button.active{background:var(--vio);color:#fff;border-color:var(--vio)}
 select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%238b8474'%3E%3Cpath d='M5.5 7.5l4.5 4.5 4.5-4.5' stroke='%238b8474' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:14px;padding-right:32px}
 .panel,.card{background:var(--card);border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 2px 10px #00000010}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:9px}
-.tag{display:inline-block;background:var(--soft);border-radius:999px;padding:4px 8px;margin:2px;font-size:.82rem}.name{font-weight:700;font-size:1.05rem}.muted{color:var(--muted);font-size:.9rem}.owned{opacity:.5}.yes{background:var(--ok)}.warn{background:#fff7dc;border:1px solid #ead38a;padding:10px;border-radius:12px}.hidden{display:none}.count{font-weight:700;color:var(--vio)}table{width:100%;border-collapse:collapse}td,th{padding:8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
+.tag{display:inline-block;background:var(--soft);border-radius:999px;padding:4px 8px;margin:2px;font-size:.82rem}.name{font-weight:700;font-size:1.05rem}.muted{color:var(--muted);font-size:.9rem}.owned{opacity:.5}.yes{background:var(--ok)}.warn{background:#fff7dc;border:1px solid #ead38a;padding:10px;border-radius:12px}html[data-theme="dark"] .warn{background:#38321f;border-color:#6d5f30}.hidden{display:none}.count{font-weight:700;color:var(--vio)}table{width:100%;border-collapse:collapse}td,th{padding:8px;border-bottom:1px solid var(--soft);text-align:left;vertical-align:top}
 .progresswrap{background:var(--soft);border-radius:999px;height:10px;overflow:hidden;margin:6px 0}.progressbar{background:var(--vio);height:100%}
-.accordion{margin:8px 0}.acc-head{width:100%;display:flex;justify-content:space-between;align-items:center;background:var(--soft);border:1px solid #eee8d5;border-radius:12px;padding:11px 14px;font-weight:600;font-size:.98rem;color:#5f6b53;cursor:pointer}
+.accordion{margin:8px 0}.acc-head{width:100%;display:flex;justify-content:space-between;align-items:center;background:var(--soft);border:1px solid var(--soft);border-radius:12px;padding:11px 14px;font-weight:600;font-size:.98rem;color:var(--accink);cursor:pointer}
 .acc-meta{display:flex;align-items:center;gap:6px;color:var(--muted);font-weight:500;font-size:.82rem}.acc-arrow{display:inline-block;transition:transform .15s}
 .acc-body{padding-top:8px}.acc-body.hidden{display:none}
 </style></head>
-<body><div class="stickytop"><header><h1>Dreamlight Guide</h1><small>V3.2 · 488 Rezepte · lokal speicherbar · Sammelstand bleibt auf diesem Gerät</small></header>
+<body><div class="stickytop"><header><div style="display:flex;align-items:flex-start;gap:12px"><div style="flex:1"><h1>Dreamlight Guide</h1><small>V3.4 · 488 Rezepte · lokal speicherbar · Sammelstand bleibt auf diesem Gerät</small></div><button id="themeBtn" type="button" aria-label="Farbschema wechseln" style="flex:none;background:#ffffff2e;border-color:#ffffff4d;color:#fff;padding:7px 12px;font-size:.85rem">Auto</button></div></header>
 <nav>
-<button data-tab="critters" class="active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><circle cx="12" cy="13" r="3.2"/><path d="M8 8c-1-2-1-4 .5-5S12 4 12 6"/><path d="M16 8c1-2 1-4-.5-5S12 4 12 6"/><path d="M6 11c-1.5-.5-3 0-3.5 1.3"/><path d="M18 11c1.5-.5 3 0 3.5 1.3"/></svg>Begleiter</button><button data-tab="find"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></svg>Fundorte</button><button data-tab="stalls"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><path d="M12 21V10"/><path d="M12 10C12 6 9 4 5 4c0 4 2 7 7 7Z"/><path d="M12 13c0-3.5 2.5-5.5 6-5.5 0 3.5-2 6.5-6 6.5Z"/></svg>Stände</button><button data-tab="meals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><path d="M6 3v7a2 2 0 0 0 2 2 2 2 0 0 0 2-2V3"/><path d="M8 12v9"/><path d="M17 3c-1.7 0-3 2-3 5s1.3 5 3 5"/><path d="M17 3v16"/></svg>Gerichte</button><button data-tab="storage"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M3 7l2-4h14l2 4"/><path d="M10 12h4"/></svg>Lager</button>
+<button data-tab="critters" class="active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><circle cx="12" cy="13" r="3.2"></circle><path d="M8 8c-1-2-1-4 .5-5S12 4 12 6"></path><path d="M16 8c1-2 1-4-.5-5S12 4 12 6"></path><path d="M6 11c-1.5-.5-3 0-3.5 1.3"></path><path d="M18 11c1.5-.5 3 0 3.5 1.3"></path></svg>Begleiter</button><button data-tab="find"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.3-4.3"></path></svg>Fundorte</button><button data-tab="stalls"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><path d="M12 21V10"></path><path d="M12 10C12 6 9 4 5 4c0 4 2 7 7 7Z"></path><path d="M12 13c0-3.5 2.5-5.5 6-5.5 0 3.5-2 6.5-6 6.5Z"></path></svg>Stände</button><button data-tab="meals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><path d="M6 3v7a2 2 0 0 0 2 2 2 2 0 0 0 2-2V3"></path><path d="M8 12v9"></path><path d="M17 3c-1.7 0-3 2-3 5s1.3 5 3 5"></path><path d="M17 3v16"></path></svg>Gerichte</button><button data-tab="storage"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><rect x="3" y="7" width="18" height="13" rx="1.5"></rect><path d="M3 7l2-4h14l2 4"></path><path d="M10 12h4"></path></svg>Lager</button>
 </nav></div><main>
 <section id="critters">
 <div class="panel"><p class="muted">Gesamtfortschritt: <span id="ptext" class="count"></span></p><div class="progresswrap"><div class="progressbar" id="pbar" style="width:0%"></div></div></div>
@@ -56,10 +169,10 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 <select id="mw"><option value="all">Alle Welten</option></select>
 <select id="ms"><option value="all">Alle Sterne</option><option value="5">★★★★★</option><option value="4">★★★★</option><option value="3">★★★</option><option value="2">★★</option><option value="1">★</option></select>
 <select id="mc"><option value="all">Alle Kategorien</option><option value="Vorspeise">Vorspeise</option><option value="Hauptgericht">Hauptgericht</option><option value="Dessert">Dessert</option><option value="Quest-Gericht">Quest-Gericht</option></select>
-<input id="mq" placeholder="Gericht oder Zutat suchen">
-</div><p class="muted"><span id="mcount" class="count"></span> Rezepte. Zusammengetragen aus mehreren quellenabgeglichenen Guides (Basisspiel + alle DLCs).</p></div><div id="mlist"></div></section>
+<input id="mq" placeholder="Gericht (deutsch oder englisch) oder Zutat suchen">
+</div><p class="muted"><span id="mcount" class="count"></span> Rezepte. Zusammengetragen aus mehreren quellenabgeglichenen Guides (Basisspiel + alle DLCs). Die deutschen Namen sind übersetzt, nicht aus dem Spiel ausgelesen – darunter steht der englische Originalname. Die Suche findet beides.</p></div><div id="mlist"></div></section>
 
-<section id="storage" class="hidden"><div class="panel"><h3>Sammlung sichern</h3><p class="muted">Dein Sammelstand liegt nur in diesem Browser. Bei Browserwechsel, neuem Handy oder "Daten löschen" geht er sonst verloren – hier kannst du ihn als Datei sichern und wiederherstellen.</p><button id="btnExport"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><path d="M12 4v11"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/></svg>Sammlung exportieren</button> <button id="btnImport"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><path d="M12 20V9"/><path d="M7 13l5-5 5 5"/><path d="M5 20h14"/></svg>Sammlung importieren</button><input type="file" id="fileImport" accept="application/json" class="hidden"></div>
+<section id="storage" class="hidden"><div class="panel"><h3>Sammlung sichern</h3><p class="muted">Dein Sammelstand liegt nur in diesem Browser. Bei Browserwechsel, neuem Handy oder "Daten löschen" geht er sonst verloren – hier kannst du ihn als Datei sichern und wiederherstellen.</p><button id="btnExport"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><path d="M12 4v11"></path><path d="M7 11l5 5 5-5"></path><path d="M5 20h14"></path></svg>Sammlung exportieren</button> <button id="btnImport"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:5px"><path d="M12 20V9"></path><path d="M7 13l5-5 5 5"></path><path d="M5 20h14"></path></svg>Sammlung importieren</button><input type="file" id="fileImport" accept="application/json" class="hidden"><p id="backupHint" class="muted" style="margin:10px 0 0"></p></div>
 <div class="panel"><h3>Dein Lagersystem</h3><p><b>Prinzip:</b> 1 kleiner Tisch = sichtbare Materialgruppe, darunter/zugeordnet jeweils 2 große Truhen. Ähnliche seltene Materialien dürfen zusammen.</p><p><b>Priorität:</b> Dauerverbrauch wie Holz, Stein, Sand, Lehm, Kohle und Erze großzügig lagern. Spezial-/Questmaterialien zusammenfassen.</p><p class="muted">Die genaue Raumbelegung ergänzen wir nach deinem real aufgebauten Lager, nicht nach einer theoretischen Tabelle.</p></div></section>
 </main>
 <script>
@@ -558,13 +671,17 @@ const meals=[["Arendellian Pickled Herring","Dreamlight Valley",5,"Vorspeise","H
 ["Honey Triffle","Honeyglow Woods",4,"Dessert","Pufflebud Pods, Golden Honey, Tree Resin, Juniper Berry"],
 ["Pooh's Birthday Cake","Honeyglow Woods",5,"Dessert","Golden Honey, beliebiges Süßes, beliebiges Protein, beliebige Frucht, beliebiges Getreide"]];
 const initial=["Dreamlight Valley|Hauptplatz|Eichhörnchen|Klassisch", "Dreamlight Valley|Hauptplatz|Eichhörnchen|Rot", "Dreamlight Valley|Hauptplatz|Eichhörnchen|Grau", "Dreamlight Valley|Hauptplatz|Eichhörnchen|Schwarz", "Dreamlight Valley|Friedliche Wiese|Kaninchen|Klassisch", "Dreamlight Valley|Friedliche Wiese|Kaninchen|Schwarz", "Dreamlight Valley|Friedliche Wiese|Kaninchen|Braun", "A Rift in Time|Grasland|Capybara|Klassisch (orange/rotbraun)", "A Rift in Time|Ebene|Kobra|Klassisch (lila/blau/schwarz wirkend)"];
+const store={get:(k,d)=>{try{const v=localStorage.getItem('heike-ddlv-'+k);return v==null?d:JSON.parse(v)}catch{return d}},set:(k,v)=>{try{localStorage.setItem('heike-ddlv-'+k,JSON.stringify(v))}catch{}}};
+const debounce=(fn,ms=150)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms)}};
+let cooked=store.get('cooked',{});
+let cookFilter=store.get('cookFilter',false);
 let owned=JSON.parse(localStorage.getItem('heike-ddlv-owned-v2')||'null')||Object.fromEntries(initial.map(k=>[k,true]));
 const $=s=>document.querySelector(s), key=x=>x.slice(0,4).join('|');
-let timeMode='now'; let fed=JSON.parse(localStorage.getItem('heike-ddlv-fed-v1')||'{}');
+let timeMode=store.get('timeMode','now'); let fed=JSON.parse(localStorage.getItem('heike-ddlv-fed-v1')||'{}');
 const dayNames=['So','Mo','Di','Mi','Do','Fr','Sa']; const todayKey=()=>new Date().toLocaleDateString('sv-SE');
 if(localStorage.getItem('heike-ddlv-fed-day')!==todayKey()){fed={};localStorage.setItem('heike-ddlv-fed-v1','{}');localStorage.setItem('heike-ddlv-fed-day',todayKey())}
 function scheduleStatus(data){if(!data||!data.week)return {today:false,now:false,label:'Zeitplan fehlt'};const d=new Date().getDay(),mins=new Date().getHours()*60+new Date().getMinutes(),slot=data.week[d];if(slot==null)return {today:false,now:false,label:'Heute nicht da',weather:data.weather};const ranges=Array.isArray(slot[0])?slot:[slot];const now=ranges.some(r=>mins>=r[0]&&mins<r[1]);const fmt=n=>String(Math.floor(n/60)%24).padStart(2,'0')+':'+String(n%60).padStart(2,'0');const label=ranges.map(r=>r[0]===0&&r[1]===1440?'ganztägig':fmt(r[0])+'–'+(r[1]===1440?'24:00':fmt(r[1]))+' Uhr').join(' & ');return {today:true,now,label,weather:data.weather};}
-function setTimeMode(m){timeMode=m;['now','today','all'].forEach(x=>$('#tm-'+x).classList.toggle('active',x===m));renderCritters()}
+function setTimeMode(m){timeMode=m;store.set('timeMode',m);['now','today','all'].forEach(x=>$('#tm-'+x).classList.toggle('active',x===m));renderCritters()}
 window.toggleFed=k=>{fed[k]=!fed[k];localStorage.setItem('heike-ddlv-fed-v1',JSON.stringify(fed));renderCritters()}
 document.addEventListener('DOMContentLoaded',()=>{
   ['now','today','all'].forEach(m=>{
@@ -582,12 +699,14 @@ function accordionSection(id,label,count,forceOpen){
   const sec=document.createElement('div'); sec.className='accordion';
   const head=document.createElement('button'); head.type='button'; head.className='acc-head';
   head.innerHTML=`<span>${esc(label)}</span><span class="acc-meta">${count} <span class="acc-arrow">${open?'▾':'▸'}</span></span>`;
+  head.setAttribute('aria-expanded',open?'true':'false');
   const body=document.createElement('div'); body.className='acc-body'+(open?'':' hidden');
   head.onclick=()=>{
     const willOpen=body.classList.contains('hidden');
     openSections[skey]=willOpen;
     body.classList.toggle('hidden');
     head.querySelector('.acc-arrow').textContent=willOpen?'▾':'▸';
+    head.setAttribute('aria-expanded',willOpen?'true':'false');
   };
   sec.append(head,body);
   return {sec,body};
@@ -619,6 +738,7 @@ function renderCritters(){
   if(timeMode==='now') f=f.filter(x=>scheduleStatus(x[6]).now);
 
   $('#ccount').textContent=f.length;
+  if(typeof updCritters==='function') updCritters();
   const n=new Date();
   $('#nowInfo').textContent=(timeMode==='now'?'Jetzt verfügbar':timeMode==='today'?'Heute verfügbar':'Alle Begleiter')
     +' · '+dayNames[n.getDay()]+' '+n.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
@@ -637,6 +757,7 @@ function renderCritters(){
     const {sec,body}=accordionSection('clist',w,items.length,!!q);
     items.forEach(x=>{
     const k=key(x);
+    const st=scheduleStatus(x[6]);
     const card=document.createElement('div');
     card.className='card'+(owned[k]?' owned':'');
     card.innerHTML=
@@ -644,7 +765,7 @@ function renderCritters(){
       '<span class="tag">'+esc(x[1])+'</span>'+
       '<p><b>Lieblingsfutter:</b> '+esc(x[4])+
       '<br><b>Annäherung:</b> '+esc(x[5])+
-      '<br><b>Heute:</b> '+esc(scheduleStatus(x[6]).label)+(scheduleStatus(x[6]).weather?'<br><b>Zusatz:</b> '+esc(scheduleStatus(x[6]).weather):'')+'</p>';
+      '<br><b>Heute:</b> '+(st.label==='Zeitplan fehlt'?'<span class="tag neutral">Zeitplan unbekannt</span>':esc(st.label))+(st.weather?'<br><b>Zusatz:</b> '+esc(st.weather):'')+'</p>';
 
     const actions=document.createElement('div');
     actions.style.cssText='display:flex;gap:7px;flex-wrap:wrap';
@@ -670,15 +791,45 @@ function renderCritters(){
 }
 window.toggleCritter=k=>{owned[k]=!owned[k];localStorage.setItem('heike-ddlv-owned-v2',JSON.stringify(owned));renderCritters();updateProgress()}
 function updateProgress(){let all=critters.map(key),have=all.filter(k=>owned[k]).length,pct=all.length?Math.round(have/all.length*100):0;$('#ptext').textContent=`${have} von ${all.length} Begleiter-Varianten (${pct}%)`;$('#pbar').style.width=pct+'%'}
-$('#btnExport').onclick=()=>{let blob=new Blob([JSON.stringify(owned,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='dreamlight-sammlung-backup.json';a.click();URL.revokeObjectURL(a.href)}
+$('#btnExport').onclick=()=>{
+  const payload={app:'dreamlight-guide',format:3,exported:new Date().toISOString(),owned,fed,fedDay:localStorage.getItem('heike-ddlv-fed-day')||todayKey(),cooked};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='dreamlight-sammlung-'+todayKey()+'.json';
+  a.click(); URL.revokeObjectURL(a.href);
+  store.set('lastExport',Date.now()); renderBackupHint();
+}
 $('#btnImport').onclick=()=>$('#fileImport').click()
-$('#fileImport').onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let data=JSON.parse(r.result);if(typeof data!=='object'||Array.isArray(data))throw 0;owned=data;localStorage.setItem('heike-ddlv-owned-v2',JSON.stringify(owned));renderCritters();updateProgress();alert('Sammlung erfolgreich importiert.')}catch{alert('Diese Datei sieht nicht wie ein gültiges Backup aus.')}};r.readAsText(f);e.target.value=''}
+$('#fileImport').onchange=e=>{
+  const file=e.target.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const data=JSON.parse(r.result);
+      if(typeof data!=='object'||data===null||Array.isArray(data)) throw 0;
+      const inc = (data.owned&&typeof data.owned==='object') ? data.owned : data;
+      const incN=Object.values(inc).filter(Boolean).length, curN=Object.values(owned).filter(Boolean).length;
+      if(!incN&&!Object.keys(inc).length) throw 0;
+      const merge=confirm('Die Datei enthält '+incN+' gesammelte Varianten, aktuell hast du '+curN+'.\n\nOK = zusammenführen (nichts geht verloren)\nAbbrechen = aktuellen Stand durch die Datei ersetzen');
+      owned = merge ? Object.assign({}, owned, Object.fromEntries(Object.entries(inc).filter(([k,v])=>v))) : inc;
+      localStorage.setItem('heike-ddlv-owned-v2',JSON.stringify(owned));
+      if(data.cooked&&typeof data.cooked==='object'){cooked=merge?Object.assign({},cooked,data.cooked):data.cooked;store.set('cooked',cooked);renderMeals()}
+      if(data.fed&&data.fedDay===todayKey()){fed=Object.assign({},fed,data.fed);localStorage.setItem('heike-ddlv-fed-v1',JSON.stringify(fed))}
+      renderCritters(); updateProgress();
+      alert(merge?'Sammlung zusammengeführt: '+Object.values(owned).filter(Boolean).length+' Varianten.':'Sammlung ersetzt: '+incN+' Varianten.');
+    }catch{ alert('Diese Datei sieht nicht wie ein gültiges Backup aus.') }
+  };
+  r.readAsText(file); e.target.value='';
+}
 function renderFind(){let q=$('#fq').value.trim().toLowerCase();let r=resources.map(x=>[...x]).concat(flowers.map(x=>[x[0],'Blume','Dreamlight Valley / DLC',x[1],'Wild wachsend','']));let f=r.filter(x=>!q||x.join(' ').toLowerCase().includes(q));
   renderGroupedHTML('#flist', f.slice(0,300), x=>x[2], x=>`<div class="card"><div class="name">${esc(x[0])}</div><span class="tag">${esc(x[1])}</span><span class="tag">${esc(x[3])}</span><p><b>So bekommst du es:</b> ${esc(x[4])}${x[5]?`<br><b>Verkauf:</b> ${esc(x[5])} Münzen`:''}</p></div>`, q, 'Keine Treffer.');
+  if(f.length>300){const n=document.createElement('p');n.className='muted';n.textContent='Nur die ersten 300 von '+f.length+' Treffern werden gezeigt – suche etwas genauer.';$('#flist').appendChild(n)}
 }
 function renderStalls(){let q=$('#sq').value.toLowerCase();let f=stalls.filter(x=>!q||x.join(' ').toLowerCase().includes(q));
   renderGroupedHTML('#slist', f, x=>x[0], x=>`<div class="card"><div class="name">${esc(x[1])}</div><p><b>Samen/Angebot:</b> ${esc(x[2])}</p></div>`, q, 'Keine Treffer.');
 }
+const mealDE={"Arendellian Pickled Herring":"Arendellischer eingelegter Hering","Large Seafood Platter":"Große Meeresfrüchteplatte","Potato Leek Soup":"Kartoffel-Lauch-Suppe","Sesame Balls":"Sesambällchen","Bug Platter":"Insektenplatte","Fish Creole":"Kreolischer Fisch","Ghostly Fish Steak":"Geisterhaftes Fischsteak","Greek Pizza":"Griechische Pizza","Lancetfish Paella":"Lanzettfisch-Paella","Lobster Roll":"Hummerbrötchen","Mediterranean Salad":"Mediterraner Salat","Mushu's Congee":"Mushus Congee","Ranch Salad":"Ranch-Salat","Teriyaki Salmon":"Teriyaki-Lachs","Tuna Burger":"Thunfischburger","Aurora's Cake":"Auroras Kuchen","Birthday Cake":"Geburtstagskuchen","Garlic Chocolate Tart":"Knoblauch-Schokoladentarte","Gingerbread House":"Lebkuchenhaus","Minnie Cupcake":"Minnie-Cupcake","Mermaid Cupcake":"Meerjungfrauen-Cupcake","Pastry Cream and Fruits":"Vanillecreme mit Früchten","Princess Aurora Raspberry Cupcake":"Prinzessin-Aurora-Himbeer-Cupcake","Spaceship Earth Cupcake":"Spaceship-Earth-Cupcake","Spring Egg Bowl":"Frühlings-Eierbowl","Stitch Cupcake":"Stitch-Cupcake","Wedding Cake":"Hochzeitstorte","The Wazowski Special":"Das Wazowski-Spezial","Sulley's Coffee":"Sulleys Kaffee","Bunuelos":"Buñuelos","Creamy Soup":"Cremige Suppe","Dream Fizz":"Traum-Fizz","Pickled Herring":"Eingelegter Hering","Poached Basil-Butter Sturgeon":"Pochierter Stör in Basilikumbutter","Pumpkin Soup":"Kürbissuppe","Souffle":"Soufflé","Tea Sandwiches":"Tee-Sandwiches","Basil Omelet":"Basilikum-Omelett","Classic Frankfurter":"Klassisches Frankfurter Würstchen","Creamy Garlic Scallops":"Kammmuscheln in Knoblauchsahne","Fish Pasta":"Fischpasta","Fish Tacos":"Fischtacos","Lioness Feast":"Löwinnen-Festmahl","Magura Sushi":"Maguro-Sushi","Margherita Pizza":"Pizza Margherita","Mushroom Pizza":"Pilzpizza","Pan-fried Angler Fish":"Gebratener Seeteufel","Seafood Boil":"Meeresfrüchte-Topf","Sole Meuniere":"Seezunge Müllerin","Sweet Udon":"Süße Udon","Tasty Salad":"Leckerer Salat","Vegetarian Pizza":"Vegetarische Pizza","Vegetarian Taco":"Vegetarischer Taco","Veggie Casserole":"Gemüseauflauf","Veggie Skewers":"Gemüsespieße","Walleye en Papillote":"Zander en Papillote","Wonton Soup":"Wan-Tan-Suppe","Banana Ice Cream":"Bananeneis","Carrot Cake":"Karottenkuchen","Cheesecake":"Käsekuchen","Cheshire Cat Tail":"Grinsekatzen-Schwanz","Chocolate Chip Cookies":"Schoko-Cookies","Chocolate Ice Cream":"Schokoladeneis","Chocolate Waffles":"Schokowaffeln","Coconut Cake":"Kokoskuchen","Coconut Ice Cream":"Kokoseis","Crepe":"Crêpe","Fruitcake":"Früchtekuchen","Jam Waffles":"Marmeladenwaffeln","Joyful Meal":"Freudiges Mahl","Meringue Pie":"Meringue-Torte","Mint Chocolate":"Minzschokolade","Peanut Butter Waffles":"Erdnussbutter-Waffeln","Red Fruit Sorbet":"Rotfrucht-Sorbet","Roasted Marshmallow":"Geröstetes Marshmallow","Spring Mimosa Eggs":"Frühlings-Mimosen-Eier","Tropical Pop":"Tropen-Eis am Stiel","Vanilla Ice Cream":"Vanilleeis","Waffles":"Waffeln","Wonderland Cookies":"Wunderland-Kekse","Yule Log":"Weihnachtlicher Baumstammkuchen","Bell Pepper Puffs":"Paprika-Küchlein","Chili Pepper Puffs":"Chili-Küchlein","Eggplant Puffs":"Auberginen-Küchlein","Grilled Veggie Platter":"Gegrillte Gemüseplatte","Onion Puffs":"Zwiebel-Küchlein","Porridge with Fruits":"Porridge mit Früchten","Potato Puffs":"Kartoffel-Küchlein","Pottage":"Eintopf","Pumpkin Puffs":"Kürbis-Küchlein","Zucchini Puffs":"Zucchini-Küchlein","Apple Cider Glazed Salmon":"Lachs in Apfelweinglasur","Carp Salad":"Karpfensalat","Cheesy Crispy Baked Cod":"Überbackener Kabeljau mit Käse","Fish Pie":"Fischpastete","Fish Risotto":"Fischrisotto","Fish Salad":"Fischsalat","Fish Soup":"Fischsuppe","Fish Steak":"Fischsteak","Hearty Salad":"Herzhafter Salat","Kronk's Spinach Puffs":"Kronks Spinat-Küchlein","Lemon Garlic Swordfish":"Schwertfisch mit Zitrone und Knoblauch","Omelet":"Omelett","Pan-Seared Bass & Vegetables":"Gebratener Barsch mit Gemüse","Pan-Seared Tilapia & Vegetables":"Gebratener Tilapia mit Gemüse","Seafood Pasta":"Meeresfrüchte-Pasta","Seafood Pie":"Meeresfrüchte-Pastete","Seafood Soup":"Meeresfrüchtesuppe","Seared Rainbow Trout":"Gebratene Regenbogenforelle","Simple Fried Perch":"Einfacher gebratener Flussbarsch","Spicy Baked Bream":"Pikante gebackene Brasse","Steamed Fugu":"Gedämpfter Fugu","Sweet & Sour Kingfish Steak":"Süß-saures Königsfischsteak","Vegetarian Stew":"Vegetarischer Eintopf","Veggie Pasta":"Gemüsepasta","Veggie Pie":"Gemüsepastete","\"My Hero\" Cookie":"„Mein Held“-Keks","Apple Pie":"Apfelkuchen","Apple Sorbet":"Apfelsorbet","Banana Pie":"Bananenkuchen","Berry Salad":"Beerensalat","Biscuits":"Kekse","Blueberry Pie":"Blaubeerkuchen","Cherry Pie":"Kirschkuchen","Coconut Boba Tea":"Kokos-Boba-Tee","Dream Ice Cream":"Traum-Eis","Gooseberry Boba Tea":"Stachelbeer-Boba-Tee","Gray Stuff":"Das graue Zeug","Halloween Gingerbread Cookies":"Halloween-Lebkuchen","Hot Cocoa":"Heiße Schokolade","Ice Cream":"Eiscreme","Mint Boba Tea":"Minz-Boba-Tee","Pawpsicle":"Pfoteneis","Raspberry Boba Tea":"Himbeer-Boba-Tee","Red Fruit Pie":"Rotfruchtkuchen","Snow White's Gooseberry Pie":"Schneewittchens Stachelbeerkuchen","Sour Snow Cones":"Saure Schneekegel","Spring chocolate":"Frühlingsschokolade","Whimsical Pie":"Wunderlicher Kuchen","French Fries":"Pommes frites","Green Salad":"Grüner Salat","Oyster Platter":"Austernplatte","Peanut Butter Sandwich":"Erdnussbutter-Sandwich","Roasted Asparagus":"Gerösteter Spargel","Sauteed Mushrooms":"Sautierte Pilze","Seafood Platter":"Meeresfrüchteplatte","Sweet Herring":"Süßer Hering","Vegetable Soup":"Gemüsesuppe","Baked Carp":"Gebackener Karpfen","Crispy Baked Cod":"Knuspriger gebackener Kabeljau","Fish Sandwiches":"Fisch-Sandwiches","Grilled Fish Entree":"Gegrillter Fisch als Hauptgang","Marvellous Jam":"Wunderbare Marmelade","Savory Fish":"Würziger Fisch","Scrambled Egg":"Rührei","Seafood Salad":"Meeresfrüchtesalat","Smoked Peanuts and Anglerfish":"Geräucherte Erdnüsse mit Seeteufel","Tasty Veggies":"Leckeres Gemüse","Boba Tea":"Boba-Tee","Caramel Apples":"Karamelläpfel","Chrysanthemum Tea":"Chrysanthementee","Fruit Sorbet":"Fruchtsorbet","Jasmine tea":"Jasmintee","Lemon Sorbet":"Zitronensorbet","Minnie's Gingerbread Cookies":"Minnies Lebkuchen","Mint Candy":"Minzbonbon","Mint Sorbet":"Minzsorbet","Oolong Tea":"Oolong-Tee","Sweet Slush":"Süßer Slush","Cheese Platter":"Käseplatte","Crackers":"Cracker","Crudites":"Crudités","Grilled Vegetables":"Gegrilltes Gemüse","Hard-Boiled Eggs":"Hartgekochte Eier","Okra Soup":"Okrasuppe","Puree":"Püree","Salad":"Salat","Seafood Appetizer":"Meeresfrüchte-Vorspeise","Tomato Soup":"Tomatensuppe","Grilled Fish":"Gegrillter Fisch","Leek Soup":"Lauchsuppe","Candy":"Bonbon","Coffee":"Kaffee","Fruit Salad":"Obstsalat","Plain Snow Cones":"Einfache Schneekegel","Barbecued Brilliant Blue Starfish":"Gegrillter leuchtend blauer Seestern","Barbecued Pretty Pink Starfish":"Gegrillter hübsch rosa Seestern","Bulgur Salad":"Bulgursalat","Clam Juice":"Muschelsaft","Coleslaw":"Krautsalat","Conch Ceviche":"Muschel-Ceviche","Crab Melts":"Überbackene Krabbentoasts","Dumplings":"Teigtaschen","Nuts and Bolts":"Schrauben und Muttern","Roasted Almonds":"Geröstete Mandeln","Royal Ice Tea":"Königlicher Eistee","Royal Latte":"Königlicher Latte","Royal Tea":"Königlicher Tee","Sand Worm Carpaccio Plate":"Sandwurm-Carpaccio-Platte","Shad Ceviche":"Maifisch-Ceviche","Spicy Scorpion Skewer":"Pikanter Skorpionspieß","Takoyaki Stick":"Takoyaki-Spieß","Thousand Needles":"Tausend Nadeln","Tomato Basil Soup":"Tomaten-Basilikum-Suppe","Vegetarian Dumplings":"Vegetarische Teigtaschen","Baked Beans":"Gebackene Bohnen","Best Fish Forever":"Bester Fisch aller Zeiten","Blend of the Bayou":"Bayou-Mischung","Blue Starfish BBQ":"Blauer Seestern vom Grill","Bony Osso Buco":"Knochiges Osso Buco","Braised Abalone Oyster":"Geschmorte Abalone","Braised Bamboo Shoots":"Geschmorte Bambussprossen","Cheese Burger":"Cheeseburger","Chicken Souvlaki":"Hähnchen-Souvlaki","Classic Mac and Cheese":"Klassisches Mac and Cheese","Cream Cheese Bagel":"Bagel mit Frischkäse","Crimson Burger":"Purpurroter Burger","Dragon Roll Maki":"Drachenrollen-Maki","Fabulous Fajitas":"Fabelhafte Fajitas","Good Ol' Fashioned Burger":"Guter alter Burger","Hamburger Steak":"Hacksteak","Hawaiian Pizza":"Pizza Hawaii","Lo-Fries":"Lo-Pommes","Meat Pie":"Fleischpastete","Meaty Taco":"Fleisch-Taco","Milky Way Stew":"Milchstraßen-Eintopf","Pasta with Herbs":"Pasta mit Kräutern","Pesto with Linguine":"Linguine mit Pesto","Pink Starfish BBQ":"Rosa Seestern vom Grill","Piquant Piranha Soup":"Pikante Piranha-Suppe","Rainbouillabaisse":"Regenbouillabaisse","Rhapsody Roll":"Rhapsodie-Rolle","Roast":"Braten","Royal Burger":"Königlicher Burger","Ruby Masoor Dal":"Rubin-Masoor-Dal","Sand Stew":"Sand-Eintopf","Sausage and Sauerkraut Platter":"Wurst-und-Sauerkraut-Platte","Sesame Seed Bagel":"Sesambagel","Sweet and Sour Stir-Fry":"Süß-saures Pfannengemüse","Tandoori Chicken":"Tandoori-Hähnchen","Tourtiere":"Tourtière","Turkey Leg":"Putenkeule","Turnip Tartiflette":"Rüben-Tartiflette","Vegetarian Turnip Tartiflette":"Vegetarische Rüben-Tartiflette","Apple Sauce":"Apfelmus","Basil Berry Salad":"Basilikum-Beeren-Salat","Caramel Macarons":"Karamell-Macarons","Charlotte Cake":"Charlotte-Torte","Chocolate Macarons":"Schokoladen-Macarons","Cinnamon Donut":"Zimt-Donut","Cotton Candy":"Zuckerwatte","Danish":"Plundergebäck","Dreamango Boba Tea":"Traummango-Boba-Tee","Filled Dates":"Datteln mit Füllung","French Macarons":"Französische Macarons","Fruit Milkshake":"Frucht-Milchshake","Glazed Donut":"Glasierter Donut","Gourmet Grubs":"Gourmet-Larven","Jam Macarons":"Marmeladen-Macarons","Melon Boba Tea":"Melonen-Boba-Tee","Mooncake":"Mondkuchen","Nestling Crepe":"Nestling-Crêpe","Pasteis de Nata":"Pastéis de Nata","Pear Upside-Down Cake":"Umgedrehter Birnenkuchen","Pineapple Soft Serve":"Ananas-Softeis","Raspberry Jam Sandwich":"Himbeermarmeladen-Sandwich","Spicy Macarons":"Pikante Macarons","Spiky Berry Pie":"Spiky-Berry-Kuchen","Stellar Milkshake":"Sternen-Milchshake","Strawberry Pie":"Erdbeerkuchen","Strawberry Shortcake":"Erdbeer-Shortcake","Stuffed Dates":"Gefüllte Datteln","Sugar-Free Banana Muffin":"Zuckerfreier Bananenmuffin","Sugar-Free Blueberry Muffin":"Zuckerfreier Blaubeermuffin","Sugar-Free Fruit Explosion Muffin":"Zuckerfreier Fruchtexplosions-Muffin","Sugar-Free Fruit Muffin":"Zuckerfreier Fruchtmuffin","Sweet Popcorn":"Süßes Popcorn","Sweet Tofu":"Süßer Tofu","Vanilla Macarons":"Vanille-Macarons","Ambrosia Smoothie":"Ambrosia-Smoothie","Baked Feta and Olives":"Gebackener Feta mit Oliven","Cape Gooseberry Smoothie":"Physalis-Smoothie","Faerie Rye Crackers":"Feen-Roggencracker","Golden Apple Smoothie":"Goldapfel-Smoothie","Greek Potatoes":"Griechische Kartoffeln","Honeydew Smoothie":"Honigmelonen-Smoothie","Lightning Bolt":"Blitzstrahl","Olympian Tapenade":"Olympische Tapenade","Persimmon Smoothie":"Kaki-Smoothie","Radicchio Slaw":"Radicchio-Salat","Sauteed Porcini":"Sautierte Steinpilze","Simple Chia Pudding":"Einfacher Chia-Pudding","Sparkling Ambrosia":"Perlende Ambrosia","Spiral Strawberry Smoothie":"Spiralerdbeer-Smoothie","A Very Unusual Tea Time":"Eine sehr ungewöhnliche Teestunde","Aquatic Escargot":"Wasserschnecken","Arcane Garlic Crab":"Arkane Knoblauchkrabbe","Argossian Pizza":"Argossische Pizza","Barley Salad":"Gerstensalat","Cape Gooseberry Chia Pancakes":"Physalis-Chia-Pfannkuchen","Caprese Salad":"Caprese-Salat","Cauliflower Steak":"Blumenkohlsteak","Chia Pudding":"Chia-Pudding","Chia Seed Bread":"Chiasamenbrot","Chimera Skewer":"Chimären-Spieß","Electric Radicchio and Persimmon Salad":"Elektrischer Radicchio-Kaki-Salat","Flying Fish Quenelles":"Fliegender-Fisch-Klößchen","Garlic Steam Mussels":"Knoblauch-Miesmuscheln","Grecian Baked Fish":"Griechischer Ofenfisch","Greek Salad":"Griechischer Salat","Green Bean Casserole":"Grüne-Bohnen-Auflauf","Grilled Koi Gyro":"Gegrilltes Koi-Gyros","Hermit Crab Pasta":"Einsiedlerkrebs-Pasta","Hippocampus Cepelinai Dumplings":"Hippocampus-Cepelinai-Klöße","Lamprey Sashimi":"Neunauge-Sashimi","Loaded Breakfast Yogurt":"Reichhaltiger Frühstücksjoghurt","Loaded Golden Apple Porridge":"Reichhaltiger Goldapfel-Porridge","Loaded Honeydew Porridge":"Reichhaltiger Honigmelonen-Porridge","Loaded Persimmon Porridge":"Reichhaltiger Kaki-Porridge","Loaded Rhubarb Porridge":"Reichhaltiger Rhabarber-Porridge","Loaded Sea Grape Porridge":"Reichhaltiger Meertrauben-Porridge","Lupine Cullen Skink":"Lupinen-Cullen-Skink","Mussel Risotto":"Miesmuschel-Risotto","Oatmeal":"Haferbrei","Olive Plate":"Olivenplatte","Persimmon Chia Pancakes":"Kaki-Chia-Pfannkuchen","Randichio-Stuffed Porcini":"Mit Radicchio gefüllte Steinpilze","Roasted Barley and Veggies":"Geröstete Gerste mit Gemüse","Roasted Brussels Sprouts":"Gerösteter Rosenkohl","Roasted Green Beans":"Geröstete grüne Bohnen","Salt-Baked Sea Wolf":"Seewolf in Salzkruste","Salt-Pickled Cauliflower":"Salzeingelegter Blumenkohl","Salt-Pickled Ginger":"Salzeingelegter Ingwer","Salt-Pickled Green Beans":"Salzeingelegte grüne Bohnen","Salt-Pickled Radicchio":"Salzeingelegter Radicchio","Salt-Pickled Radish":"Salzeingelegtes Radieschen","Salt-Pickled Grapes":"Salzeingelegte Trauben","Scottish Porridge":"Schottischer Porridge","Sea Grape Chia Pancakes":"Meertrauben-Chia-Pfannkuchen","Seaweed Salad":"Algensalat","Shovel Bird Eggs Benedict":"Schaufelvogel-Eier Benedict","Soda Bread and Feta":"Sodabrot mit Feta","Spiral Strawberry Chia Pancakes":"Spiralerdbeer-Chia-Pfannkuchen","Sprout-Stuffed Porcini":"Mit Sprossen gefüllte Steinpilze","Squash-Stuffed Porcini":"Mit Kürbis gefüllte Steinpilze","Squid Sashimi":"Tintenfisch-Sashimi","Steamed Mussels":"Gedämpfte Miesmuscheln","Stuffed Ring Squash":"Gefüllter Ringkürbis","Tuna Sashimi":"Thunfisch-Sashimi","Aphrodite's Delight":"Aphrodites Genuss","Cape Gooseberry Sour Fondue":"Physalis-Sauerfondue","Cinnamon Cake":"Zimtkuchen","Cinnamon Cookies":"Zimtkekse","Golden Apple Pie":"Goldapfelkuchen","Honeydew Sour Fondue":"Honigmelonen-Sauerfondue","Lightning Cake":"Blitzkuchen","Lightning Cookies":"Blitzkekse","Merryweather's Gingersnaps":"Sonnenscheins Ingwerkekse","Nutmeg Cake":"Muskatkuchen","Nutmeg Cookies":"Muskatkekse","Persimmon Pie":"Kakikuchen","Persimmon Sour Fondue":"Kaki-Sauerfondue","Rice Pudding":"Milchreis","Sour Berry Dessert":"Sauerbeeren-Dessert","Sour Berry Pie":"Sauerbeerenkuchen","Spicy Yogurt":"Pikanter Joghurt","Spiral Strawberry Pie":"Spiralerdbeerkuchen","Spiral Strawberry Sour Fondue":"Spiralerdbeer-Sauerfondue","Strawberry Rhubarb Pie":"Erdbeer-Rhabarber-Kuchen","Underworld Cake":"Unterwelt-Kuchen","Vanilla Yogurt":"Vanillejoghurt","Alpine Fishcakes":"Alpen-Fischfrikadellen","Buttermilk Borscht":"Buttermilch-Borschtsch","Fizzy Nectar Soda":"Prickelnde Nektar-Limonade","Rosehip Honey Tea":"Hagebutten-Honig-Tee","Scarlet Bouquet Salad":"Scharlachroter Blumensalat","Smoked Fish Charcuterie Spread":"Räucherfisch-Platte","101 Teeny Tiny Dalmation Cupcakes":"101 winzige Dalmatiner-Cupcakes","Afternoon Tea Set":"Nachmittagstee-Set","Baked Whitefish & Roasted Beets":"Gebackener Weißfisch mit Ofen-Rote-Bete","Beet-iful Spaetzle":"Rote-Bete-Spätzle","Bread Bowl Pumpkin Soup":"Kürbissuppe im Brotlaib","Button Stew":"Knopf-Eintopf","Felted Breakfast Spread":"Gefilzte Frühstücksplatte","Fishy Pineapple Jelly":"Fischiges Ananas-Gelee","Friendly Bento":"Freundliches Bento","Honey Glazed Carrots":"Honigglasierte Karotten","Honey Pancakes":"Honig-Pfannkuchen","Horace's Ham Sandwich":"Horaces Schinken-Sandwich","Jellied Fish Terrine":"Fischsülze","Jellied Salad":"Sülzsalat","Kanine Crunchies Cereal":"Kanine-Crunchies-Müsli","Pixie Pizza":"Elfen-Pizza","Scarlet Kale and Cheese Pinwheels":"Scharlachgrünkohl-Käse-Schnecken","Vintage Peach Trifle":"Nostalgisches Pfirsich-Trifle","Beauty and the Beetroot Napoleons":"Die Schöne und die Rote Bete – Napoleons","Beet Brownie Stack":"Rote-Bete-Brownie-Turm","Beet Sugar Sculpture":"Rote-Bete-Zuckerskulptur","Fairy Boot Cake":"Feenstiefel-Kuchen","Fairy Bread":"Feenbrot","Fairy Wands":"Feenstäbe","Pixie Ice Cream Dome Cake":"Elfen-Eiskuppel-Torte","Red Currant Linzer Cookies":"Johannisbeer-Linzer-Kekse","Red Currant Valley Cakes":"Johannisbeer-Valley-Kuchen","Tigger Tails":"Tiggers Schwänze","Honeyglow Elixir":"Honigglühen-Elixier","Fog-Busting Potion":"Nebelvertreibungs-Trank","Tummy Tonic":"Bauch-Tonikum","Pooh's Honey Garden Pie":"Puuhs Honiggarten-Kuchen","Blustery Day Soup":"Sturmtag-Suppe","Honeycrunch Bar":"Honigcrunch-Riegel","Sweet Acorn Porridge":"Süßer Eichel-Porridge","Warm Milk & Honey":"Warme Milch mit Honig","Foresty Quiche":"Waldige Quiche","Honey-Glazed Plush Fish":"Honigglasierter Plüschfisch","Rabbit's Garden Pie":"Hases Gartenkuchen","Toasted Picnic Sandwich":"Getoastetes Picknick-Sandwich","Honey Macarons":"Honig-Macarons","Honey Triffle":"Honig-Trifle","Pooh's Birthday Cake":"Puuhs Geburtstagskuchen"};
+const deName=n=>mealDE[n]||n;
 function fillMealWorlds(){let ws=[...new Set(meals.map(x=>x[1]))];$('#mw').innerHTML='<option value="all">Alle Welten</option>'+ws.map(x=>`<option>${esc(x)}</option>`).join('')}
 function renderMeals(){
   const w=$('#mw').value, st=$('#ms').value, cat=$('#mc').value, q=$('#mq').value.toLowerCase();
@@ -686,13 +837,110 @@ function renderMeals(){
     (w==='all'||x[1]===w) &&
     (st==='all'||String(x[2])===st) &&
     (cat==='all'||x[3]===cat) &&
-    (!q||x.join(' ').toLowerCase().includes(q))
+    (!q||x.join(' ').toLowerCase().includes(q)||deName(x[0]).toLowerCase().includes(q))
   );
+  if(cookFilter) f=f.filter(x=>!cooked[x[0]]);
   $('#mcount').textContent=f.length;
-  const activeFilter = !!q || w!=='all' || st!=='all' || cat!=='all';
-  renderGroupedHTML('#mlist', f, x=>x[1], x=>`<div class="card"><div class="name">${esc(x[0])}</div><span class="tag">${'★'.repeat(x[2])}</span><span class="tag">${esc(x[3])}</span><p><b>Zutaten:</b> ${esc(x[4])}</p></div>`, activeFilter, 'Keine Treffer.');
+  if(typeof updMeals==='function') updMeals();
+  const activeFilter = !!q || w!=='all' || st!=='all' || cat!=='all' || cookFilter;
+  renderGroupedHTML('#mlist', f, x=>x[1], x=>`<div class="card"><div class="name">${esc(deName(x[0]))}</div>${deName(x[0])!==x[0]?`<div class="muted" style="font-size:.82rem;margin:-3px 0 5px">${esc(x[0])}</div>`:''}<span class="tag">${'★'.repeat(x[2])}</span><span class="tag">${esc(x[3])}</span><p><b>Zutaten:</b> ${esc(x[4])}</p><button type="button" class="${cooked[x[0]]?'yes':''}" data-meal="${esc(x[0])}">${cooked[x[0]]?'✓ gekocht':'○ noch nicht gekocht'}</button></div>`, activeFilter, 'Keine Treffer.');
 }
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('main section').forEach(x=>x.classList.add('hidden'));$('#'+b.dataset.tab).classList.remove('hidden')})
-$('#cw').onchange=()=>{fillAreas();renderCritters()};$('#ca').onchange=$('#cs').onchange=renderCritters;$('#cq').oninput=renderCritters;$('#fq').oninput=renderFind;$('#sq').oninput=renderStalls;$('#mq').oninput=renderMeals;$('#mw').onchange=$('#ms').onchange=$('#mc').onchange=renderMeals;
-fillWorlds();fillMealWorlds();renderCritters();renderFind();renderStalls();renderMeals();updateProgress();
+/* Tabs: ARIA, Tastaturpfeile, letzter Tab wird gemerkt */
+const tabs=[...document.querySelectorAll('nav button')];
+document.querySelector('nav').setAttribute('role','tablist');
+function activateTab(id){
+  tabs.forEach(b=>{const on=b.dataset.tab===id;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');b.tabIndex=on?0:-1});
+  document.querySelectorAll('main section').forEach(s=>s.classList.toggle('hidden',s.id!==id));
+  store.set('tab',id);
+  if(id==='storage') renderBackupHint();
+}
+tabs.forEach((b,i)=>{
+  b.setAttribute('role','tab'); b.id='tab-'+b.dataset.tab;
+  const p=$('#'+b.dataset.tab); if(p){p.setAttribute('role','tabpanel'); p.setAttribute('aria-labelledby',b.id)}
+  b.onclick=()=>activateTab(b.dataset.tab);
+  b.addEventListener('keydown',ev=>{const d=ev.key==='ArrowRight'?1:ev.key==='ArrowLeft'?-1:0;if(!d)return;ev.preventDefault();const n=tabs[(i+d+tabs.length)%tabs.length];n.focus();activateTab(n.dataset.tab)});
+});
+
+/* Filter merken */
+const filterIds=['cw','ca','cs','cq','fq','sq','mw','ms','mc','mq'];
+function saveFilters(){const o={};filterIds.forEach(id=>{const el=$('#'+id);if(el)o[id]=el.value});store.set('filters',o)}
+function restoreFilters(){
+  const s=store.get('filters',{});
+  if(s.cw&&[...$('#cw').options].some(o=>o.value===s.cw)){$('#cw').value=s.cw;fillAreas()}
+  filterIds.filter(id=>id!=='cw').forEach(id=>{const el=$('#'+id);if(!el||s[id]==null)return;
+    if(el.tagName==='SELECT'){if([...el.options].some(o=>o.value===s[id]))el.value=s[id]} else el.value=s[id]});
+}
+
+/* „Filter zurücksetzen“ – erscheint nur, wenn wirklich gefiltert wird */
+let updCritters=null, updMeals=null;
+function setupReset(hostSel, ids, defs, rerender){
+  const host=$(hostSel); if(!host) return null;
+  const b=document.createElement('button');
+  b.type='button'; b.className='hidden'; b.textContent='Filter zurücksetzen';
+  b.style.cssText='margin-left:8px;padding:4px 11px;font-size:.8rem';
+  host.parentNode.appendChild(b);
+  const upd=()=>{
+    const active=ids.some((id,i)=>{const el=$('#'+id);return el&&el.value!==defs[i]}) || (ids.includes('mw')&&cookFilter);
+    b.classList.toggle('hidden',!active);
+  };
+  b.onclick=()=>{
+    ids.forEach((id,i)=>{const el=$('#'+id);if(el)el.value=defs[i]});
+    if(ids.includes('cw')) fillAreas();
+    if(ids.includes('mw')){cookFilter=false;store.set('cookFilter',false);cookBtn.classList.remove('active')}
+    saveFilters(); rerender();
+  };
+  return upd;
+}
+
+/* Gerichte: „gekocht“ merken und ausblenden */
+const cookBtn=document.createElement('button');
+cookBtn.type='button'; cookBtn.textContent='Nur noch nicht gekocht';
+cookBtn.style.cssText='margin-left:8px;padding:4px 11px;font-size:.8rem';
+cookBtn.classList.toggle('active',cookFilter);
+$('#mcount').parentNode.appendChild(cookBtn);
+cookBtn.onclick=()=>{cookFilter=!cookFilter;store.set('cookFilter',cookFilter);cookBtn.classList.toggle('active',cookFilter);renderMeals()};
+$('#mlist').addEventListener('click',ev=>{const b=ev.target.closest('button[data-meal]');if(!b)return;const n=b.dataset.meal;cooked[n]=!cooked[n];store.set('cooked',cooked);renderMeals()});
+
+/* Backup-Erinnerung */
+function renderBackupHint(){
+  const el=$('#backupHint'); if(!el) return;
+  const last=store.get('lastExport',0), navBtn=document.querySelector('nav button[data-tab="storage"]');
+  let overdue=false;
+  if(!last){ el.className='warn'; el.textContent='Noch kein Backup gesichert. Ein Klick auf „Sammlung exportieren“ legt deinen Stand als Datei ab.'; overdue=true; }
+  else{
+    const days=Math.floor((Date.now()-last)/864e5);
+    if(days>=14){ el.className='warn'; el.textContent='Letztes Backup vor '+days+' Tagen. Zeit für ein neues.'; overdue=true; }
+    else{ el.className='muted'; el.textContent='Letztes Backup: '+new Date(last).toLocaleDateString('de-DE')+(days?' (vor '+days+' Tag'+(days===1?'':'en')+')':' (heute)'); }
+  }
+  if(navBtn) navBtn.classList.toggle('needsbackup',overdue);
+}
+
+/* Farbschema: Auto / Hell / Dunkel */
+const themeModes=['auto','light','dark'], themeLabels={auto:'Auto',light:'Hell',dark:'Dunkel'};
+let theme=store.get('theme','auto');
+const mqDark=matchMedia('(prefers-color-scheme:dark)');
+function applyTheme(t){
+  theme=t; store.set('theme',t);
+  document.documentElement.dataset.theme = t==='auto' ? (mqDark.matches?'dark':'light') : t;
+  const b=$('#themeBtn'); if(b) b.textContent=themeLabels[t];
+}
+mqDark.addEventListener('change',()=>{if(theme==='auto')applyTheme('auto')});
+$('#themeBtn').onclick=()=>applyTheme(themeModes[(themeModes.indexOf(theme)+1)%themeModes.length]);
+applyTheme(theme);
+
+/* Eingaben – Suche entprellt */
+$('#cw').onchange=()=>{fillAreas();saveFilters();renderCritters()};
+$('#ca').onchange=$('#cs').onchange=()=>{saveFilters();renderCritters()};
+$('#mw').onchange=$('#ms').onchange=$('#mc').onchange=()=>{saveFilters();renderMeals()};
+$('#cq').oninput=debounce(()=>{saveFilters();renderCritters()});
+$('#fq').oninput=debounce(()=>{saveFilters();renderFind()});
+$('#sq').oninput=debounce(()=>{saveFilters();renderStalls()});
+$('#mq').oninput=debounce(()=>{saveFilters();renderMeals()});
+
+fillWorlds(); fillMealWorlds(); restoreFilters();
+updCritters=setupReset('#ccount',['cw','ca','cs','cq'],['all','all','need',''],()=>renderCritters());
+updMeals=setupReset('#mcount',['mw','ms','mc','mq'],['all','all','all',''],()=>renderMeals());
+setTimeMode(timeMode);
+renderFind(); renderStalls(); renderMeals(); updateProgress(); renderBackupHint();
+activateTab(store.get('tab','critters'));
 </script></body></html>
