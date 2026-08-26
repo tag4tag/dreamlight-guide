@@ -8,19 +8,25 @@
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%237055a8'/%3E%3Ctext x='50' y='66' font-size='55' text-anchor='middle'%3E%F0%9F%90%BF%3C/text%3E%3C/svg%3E">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%237055a8'/%3E%3Ctext x='50' y='66' font-size='55' text-anchor='middle'%3E%F0%9F%90%BF%3C/text%3E%3C/svg%3E">
 <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Heikes%20Dreamlight%20Guide%22%2C%22short_name%22%3A%22Dreamlight%20Guide%22%2C%22display%22%3A%22standalone%22%2C%22start_url%22%3A%22.%22%2C%22background_color%22%3A%22%23f5f1ff%22%2C%22theme_color%22%3A%22%237055a8%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%2527http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%2527%2520viewBox%3D%25270%25200%2520100%2520100%2527%253E%253Crect%2520width%3D%2527100%2527%2520height%3D%2527100%2527%2520rx%3D%252720%2527%2520fill%3D%2527%25237055a8%2527%252F%253E%253Ctext%2520x%3D%252750%2527%2520y%3D%252766%2527%2520font-size%3D%252755%2527%2520text-anchor%3D%2527middle%2527%253E%25F0%259F%2590%25BF%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
-<title>Heikes Dreamlight Guide V2.9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Heikes Dreamlight Guide V3.0</title>
 <style>
 :root{--bg:#f5f1ff;--ink:#251d35;--vio:#7055a8;--card:#fff;--soft:#eee8ff;--muted:#675f72;--ok:#e0f5e2}
-*{box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;margin:0;background:var(--bg);color:var(--ink)}
+*{box-sizing:border-box}body{font-family:'Poppins',system-ui,-apple-system,sans-serif;margin:0;background:var(--bg);color:var(--ink)}
 .stickytop{position:sticky;top:0;z-index:4}
-header{padding:18px 16px;background:linear-gradient(135deg,#7055a8,#9c72c7);color:white}header h1{margin:0;font-size:1.35rem}header small{opacity:.9}
+header{padding:18px 16px;background:linear-gradient(135deg,#7055a8,#9c72c7);color:white}header h1{margin:0;font-size:1.35rem;font-weight:600}header small{opacity:.9}
 nav{display:flex;gap:7px;overflow:auto;padding:10px 12px;background:#fff;border-bottom:1px solid #ddd}nav button{white-space:nowrap}
-main{max-width:1050px;margin:auto;padding:12px}button,select,input{font:inherit;padding:10px;border:1px solid #d3cce0;border-radius:11px;background:white}button{cursor:pointer}button.active{background:var(--vio);color:#fff;border-color:var(--vio)}
+main{max-width:1050px;margin:auto;padding:12px}button,select,input{font:inherit;padding:10px;border:1px solid #d3cce0;border-radius:11px;background:white;transition:transform .1s,background .15s}button{cursor:pointer}button:active{transform:scale(.97)}button.active{background:var(--vio);color:#fff;border-color:var(--vio)}
 .panel,.card{background:var(--card);border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 2px 10px #00000010}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:9px}
-.tag{display:inline-block;background:var(--soft);border-radius:999px;padding:4px 8px;margin:2px;font-size:.82rem}.name{font-weight:800;font-size:1.05rem}.muted{color:var(--muted);font-size:.9rem}.owned{opacity:.5}.yes{background:var(--ok)}.warn{background:#fff7dc;border:1px solid #ead38a;padding:10px;border-radius:12px}.hidden{display:none}.count{font-weight:800;color:var(--vio)}table{width:100%;border-collapse:collapse}td,th{padding:8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
+.tag{display:inline-block;background:var(--soft);border-radius:999px;padding:4px 8px;margin:2px;font-size:.82rem}.name{font-weight:700;font-size:1.05rem}.muted{color:var(--muted);font-size:.9rem}.owned{opacity:.5}.yes{background:var(--ok)}.warn{background:#fff7dc;border:1px solid #ead38a;padding:10px;border-radius:12px}.hidden{display:none}.count{font-weight:700;color:var(--vio)}table{width:100%;border-collapse:collapse}td,th{padding:8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
 .progresswrap{background:var(--soft);border-radius:999px;height:10px;overflow:hidden;margin:6px 0}.progressbar{background:var(--vio);height:100%}
+.accordion{margin:8px 0}.acc-head{width:100%;display:flex;justify-content:space-between;align-items:center;background:var(--soft);border:1px solid #e3d9f7;border-radius:12px;padding:11px 14px;font-weight:600;font-size:.98rem;color:var(--vio);cursor:pointer}
+.acc-meta{display:flex;align-items:center;gap:6px;color:var(--muted);font-weight:500;font-size:.82rem}.acc-arrow{display:inline-block;transition:transform .15s}
+.acc-body{padding-top:8px}.acc-body.hidden{display:none}
 </style></head>
-<body><div class="stickytop"><header><h1>Heikes Dreamlight Guide</h1><small>Master-App V2.7 · 488 Rezepte · lokal speicherbar · Sammelstand bleibt auf diesem Gerät</small></header>
+<body><div class="stickytop"><header><h1>Heikes Dreamlight Guide</h1><small>Master-App V3.0 · 488 Rezepte · lokal speicherbar · Sammelstand bleibt auf diesem Gerät</small></header>
 <nav>
 <button data-tab="critters" class="active">🐿️ Begleiter</button><button data-tab="find">🔎 Fundorte</button><button data-tab="stalls">🌱 Stände</button><button data-tab="meals">🍳 Gerichte</button><button data-tab="storage">📦 Lager</button>
 </nav></div><main>
@@ -568,6 +574,36 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+let openSections={};
+function accordionSection(id,label,count,forceOpen){
+  const skey=id+'|'+label;
+  const open = forceOpen || openSections[skey];
+  const sec=document.createElement('div'); sec.className='accordion';
+  const head=document.createElement('button'); head.type='button'; head.className='acc-head';
+  head.innerHTML=`<span>${esc(label)}</span><span class="acc-meta">${count} <span class="acc-arrow">${open?'▾':'▸'}</span></span>`;
+  const body=document.createElement('div'); body.className='acc-body'+(open?'':' hidden');
+  head.onclick=()=>{
+    const willOpen=body.classList.contains('hidden');
+    openSections[skey]=willOpen;
+    body.classList.toggle('hidden');
+    head.querySelector('.acc-arrow').textContent=willOpen?'▾':'▸';
+  };
+  sec.append(head,body);
+  return {sec,body};
+}
+function renderGroupedHTML(containerId, items, worldFn, cardFn, query, emptyMsg){
+  const list=$(containerId);
+  if(!items.length){list.innerHTML=`<div class="card">${emptyMsg}</div>`;return;}
+  const groups={};
+  items.forEach(x=>{const w=worldFn(x);(groups[w]=groups[w]||[]).push(x)});
+  list.innerHTML='';
+  Object.keys(groups).forEach(w=>{
+    const arr=groups[w];
+    const {sec,body}=accordionSection(containerId,w,arr.length,!!query);
+    body.innerHTML=arr.map(cardFn).join('');
+    list.appendChild(sec);
+  });
+}
 function fillWorlds(){let ws=[...new Set(critters.map(x=>x[0]))]; $('#cw').innerHTML='<option value="all">Alle Welten</option>'+ws.map(x=>`<option>${esc(x)}</option>`).join(''); fillAreas()}
 function fillAreas(){let w=$('#cw').value,as=[...new Set(critters.filter(x=>w==='all'||x[0]===w).map(x=>x[1]))];$('#ca').innerHTML='<option value="all">Alle Gebiete</option>'+as.map(x=>`<option>${esc(x)}</option>`).join('')}
 function renderCritters(){
@@ -593,13 +629,18 @@ function renderCritters(){
     return;
   }
 
-  f.forEach(x=>{
+  const groups={};
+  f.forEach(x=>{(groups[x[0]]=groups[x[0]]||[]).push(x)});
+  Object.keys(groups).forEach(w=>{
+    const items=groups[w];
+    const {sec,body}=accordionSection('clist',w,items.length,!!q);
+    items.forEach(x=>{
     const k=key(x);
     const card=document.createElement('div');
     card.className='card'+(owned[k]?' owned':'');
     card.innerHTML=
       '<div class="name">'+esc(x[2])+' – '+esc(x[3])+'</div>'+
-      '<span class="tag">'+esc(x[0])+'</span><span class="tag">'+esc(x[1])+'</span>'+
+      '<span class="tag">'+esc(x[1])+'</span>'+
       '<p><b>Lieblingsfutter:</b> '+esc(x[4])+
       '<br><b>Annäherung:</b> '+esc(x[5])+
       '<br><b>Heute:</b> '+esc(scheduleStatus(x[6]).label)+(scheduleStatus(x[6]).weather?'<br><b>Zusatz:</b> '+esc(scheduleStatus(x[6]).weather):'')+'</p>';
@@ -621,7 +662,9 @@ function renderCritters(){
 
     actions.append(ownBtn,fedBtn);
     card.appendChild(actions);
-    list.appendChild(card);
+    body.appendChild(card);
+    });
+    list.appendChild(sec);
   });
 }
 window.toggleCritter=k=>{owned[k]=!owned[k];localStorage.setItem('heike-ddlv-owned-v2',JSON.stringify(owned));renderCritters();updateProgress()}
@@ -629,8 +672,12 @@ function updateProgress(){let all=critters.map(key),have=all.filter(k=>owned[k])
 $('#btnExport').onclick=()=>{let blob=new Blob([JSON.stringify(owned,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='dreamlight-sammlung-backup.json';a.click();URL.revokeObjectURL(a.href)}
 $('#btnImport').onclick=()=>$('#fileImport').click()
 $('#fileImport').onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let data=JSON.parse(r.result);if(typeof data!=='object'||Array.isArray(data))throw 0;owned=data;localStorage.setItem('heike-ddlv-owned-v2',JSON.stringify(owned));renderCritters();updateProgress();alert('Sammlung erfolgreich importiert.')}catch{alert('Diese Datei sieht nicht wie ein gültiges Backup aus.')}};r.readAsText(f);e.target.value=''}
-function renderFind(){let q=$('#fq').value.trim().toLowerCase();let r=resources.map(x=>[...x]).concat(flowers.map(x=>[x[0],'Blume','Dreamlight Valley / DLC',x[1],'Wild wachsend','']));let f=r.filter(x=>!q||x.join(' ').toLowerCase().includes(q));$('#flist').innerHTML=f.slice(0,200).map(x=>`<div class="card"><div class="name">${esc(x[0])}</div><span class="tag">${esc(x[1])}</span><span class="tag">${esc(x[2])}</span><p><b>Fundort:</b> ${esc(x[3])}<br><b>So bekommst du es:</b> ${esc(x[4])}${x[5]?`<br><b>Verkauf:</b> ${esc(x[5])} Münzen`:''}</p></div>`).join('')}
-function renderStalls(){let q=$('#sq').value.toLowerCase();let f=stalls.filter(x=>!q||x.join(' ').toLowerCase().includes(q));$('#slist').innerHTML=f.map(x=>`<div class="card"><div class="name">${esc(x[1])}</div><span class="tag">${esc(x[0])}</span><p><b>Samen/Angebot:</b> ${esc(x[2])}</p></div>`).join('')||'<div class="card">Keine Treffer.</div>'}
+function renderFind(){let q=$('#fq').value.trim().toLowerCase();let r=resources.map(x=>[...x]).concat(flowers.map(x=>[x[0],'Blume','Dreamlight Valley / DLC',x[1],'Wild wachsend','']));let f=r.filter(x=>!q||x.join(' ').toLowerCase().includes(q));
+  renderGroupedHTML('#flist', f.slice(0,300), x=>x[2], x=>`<div class="card"><div class="name">${esc(x[0])}</div><span class="tag">${esc(x[1])}</span><span class="tag">${esc(x[3])}</span><p><b>So bekommst du es:</b> ${esc(x[4])}${x[5]?`<br><b>Verkauf:</b> ${esc(x[5])} Münzen`:''}</p></div>`, q, 'Keine Treffer.');
+}
+function renderStalls(){let q=$('#sq').value.toLowerCase();let f=stalls.filter(x=>!q||x.join(' ').toLowerCase().includes(q));
+  renderGroupedHTML('#slist', f, x=>x[0], x=>`<div class="card"><div class="name">${esc(x[1])}</div><p><b>Samen/Angebot:</b> ${esc(x[2])}</p></div>`, q, 'Keine Treffer.');
+}
 function fillMealWorlds(){let ws=[...new Set(meals.map(x=>x[1]))];$('#mw').innerHTML='<option value="all">Alle Welten</option>'+ws.map(x=>`<option>${esc(x)}</option>`).join('')}
 function renderMeals(){
   const w=$('#mw').value, st=$('#ms').value, cat=$('#mc').value, q=$('#mq').value.toLowerCase();
@@ -641,7 +688,9 @@ function renderMeals(){
     (!q||x.join(' ').toLowerCase().includes(q))
   );
   $('#mcount').textContent=f.length;
-  $('#mlist').innerHTML=f.map(x=>`<div class="card"><div class="name">${esc(x[0])}</div><span class="tag">${esc(x[1])}</span><span class="tag">${'★'.repeat(x[2])}</span><span class="tag">${esc(x[3])}</span><p><b>Zutaten:</b> ${esc(x[4])}</p></div>`).join('')||'<div class="card">Keine Treffer.</div>'}
+  const activeFilter = !!q || w!=='all' || st!=='all' || cat!=='all';
+  renderGroupedHTML('#mlist', f, x=>x[1], x=>`<div class="card"><div class="name">${esc(x[0])}</div><span class="tag">${'★'.repeat(x[2])}</span><span class="tag">${esc(x[3])}</span><p><b>Zutaten:</b> ${esc(x[4])}</p></div>`, activeFilter, 'Keine Treffer.');
+}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('main section').forEach(x=>x.classList.add('hidden'));$('#'+b.dataset.tab).classList.remove('hidden')})
 $('#cw').onchange=()=>{fillAreas();renderCritters()};$('#ca').onchange=$('#cs').onchange=renderCritters;$('#cq').oninput=renderCritters;$('#fq').oninput=renderFind;$('#sq').oninput=renderStalls;$('#mq').oninput=renderMeals;$('#mw').onchange=$('#ms').onchange=$('#mc').onchange=renderMeals;
 fillWorlds();fillMealWorlds();renderCritters();renderFind();renderStalls();renderMeals();updateProgress();
