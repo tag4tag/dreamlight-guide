@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Dreamlight Guide">
+<meta name="theme-color" content="#7055a8">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%237055a8'/%3E%3Ctext x='50' y='66' font-size='55' text-anchor='middle'%3E%F0%9F%90%BF%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%237055a8'/%3E%3Ctext x='50' y='66' font-size='55' text-anchor='middle'%3E%F0%9F%90%BF%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Heikes%20Dreamlight%20Guide%22%2C%22short_name%22%3A%22Dreamlight%20Guide%22%2C%22display%22%3A%22standalone%22%2C%22start_url%22%3A%22.%22%2C%22background_color%22%3A%22%23f5f1ff%22%2C%22theme_color%22%3A%22%237055a8%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%2527http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%2527%2520viewBox%3D%25270%25200%2520100%2520100%2527%253E%253Crect%2520width%3D%2527100%2527%2520height%3D%2527100%2527%2520rx%3D%252720%2527%2520fill%3D%2527%25237055a8%2527%252F%253E%253Ctext%2520x%3D%252750%2527%2520y%3D%252766%2527%2520font-size%3D%252755%2527%2520text-anchor%3D%2527middle%2527%253E%25F0%259F%2590%25BF%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<title>Heikes Dreamlight Guide V2.7</title>
+<style>
+:root{--bg:#f5f1ff;--ink:#251d35;--vio:#7055a8;--card:#fff;--soft:#eee8ff;--muted:#675f72;--ok:#e0f5e2}
+*{box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;margin:0;background:var(--bg);color:var(--ink)}
+.stickytop{position:sticky;top:0;z-index:4}
+header{padding:18px 16px;background:linear-gradient(135deg,#7055a8,#9c72c7);color:white}header h1{margin:0;font-size:1.35rem}header small{opacity:.9}
+nav{display:flex;gap:7px;overflow:auto;padding:10px 12px;background:#fff;border-bottom:1px solid #ddd}nav button{white-space:nowrap}
+main{max-width:1050px;margin:auto;padding:12px}button,select,input{font:inherit;padding:10px;border:1px solid #d3cce0;border-radius:11px;background:white}button{cursor:pointer}button.active{background:var(--vio);color:#fff;border-color:var(--vio)}
+.panel,.card{background:var(--card);border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 2px 10px #00000010}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:9px}
+.tag{display:inline-block;background:var(--soft);border-radius:999px;padding:4px 8px;margin:2px;font-size:.82rem}.name{font-weight:800;font-size:1.05rem}.muted{color:var(--muted);font-size:.9rem}.owned{opacity:.5}.yes{background:var(--ok)}.warn{background:#fff7dc;border:1px solid #ead38a;padding:10px;border-radius:12px}.hidden{display:none}.count{font-weight:800;color:var(--vio)}table{width:100%;border-collapse:collapse}td,th{padding:8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
+.progresswrap{background:var(--soft);border-radius:999px;height:10px;overflow:hidden;margin:6px 0}.progressbar{background:var(--vio);height:100%}
+</style></head>
+<body><div class="stickytop"><header><h1>Heikes Dreamlight Guide</h1><small>Master-App V2.7 · 488 Rezepte · lokal speicherbar · Sammelstand bleibt auf diesem Gerät</small></header>
+<nav>
+<button data-tab="critters" class="active">🐿️ Begleiter</button><button data-tab="find">🔎 Fundorte</button><button data-tab="stalls">🌱 Stände</button><button data-tab="meals">🍳 Gerichte</button><button data-tab="storage">📦 Lager</button>
+</nav></div><main>
+<section id="critters">
+<div class="panel"><p class="muted">Gesamtfortschritt: <span id="ptext" class="count"></span></p><div class="progresswrap"><div class="progressbar" id="pbar" style="width:0%"></div></div></div>
+<div class="panel">
+<div style="display:flex;gap:8px;overflow-x:auto;margin-bottom:12px">
+<button id="tm-now" class="active" type="button">🟢 JETZT</button>
+<button id="tm-today" type="button">HEUTE</button>
+<button id="tm-all" type="button">ALLE</button>
+</div>
+<p id="nowInfo" class="muted" style="margin:0"></p>
+</div>
+<div class="panel"><div class="grid">
+<select id="cw"><option value="all">Alle Welten</option></select>
+<select id="ca"><option value="all">Alle Gebiete</option></select>
+<select id="cs"><option value="need">Nur: brauche ich noch</option><option value="all">Alle anzeigen</option><option value="owned">Nur: habe ich schon</option></select>
+<input id="cq" placeholder="Tier oder Farbe suchen">
+</div><p class="muted"><span id="ccount" class="count"></span> Treffer. Bereits gesammelte Varianten kannst du ausblenden.</p></div><div id="clist"></div></section>
+
+<section id="find" class="hidden"><div class="panel"><input id="fq" style="width:100%" placeholder="z. B. Diamant, weiß-rote Hortensie, Holz, Blaubeere …"><p class="muted">Durchsucht Rohstoffe, Erze, Edelsteine, Früchte, Blumen und DLC-Materialien.</p></div><div id="flist"></div></section>
+
+<section id="stalls" class="hidden"><div class="panel"><input id="sq" style="width:100%" placeholder="z. B. Sellerie, Kürbis, Kohl …"></div><div id="slist"></div></section>
+
+<section id="meals" class="hidden"><div class="panel"><div class="grid">
+<select id="mw"><option value="all">Alle Welten</option></select>
+<select id="ms"><option value="all">Alle Sterne</option><option value="5">★★★★★</option><option value="4">★★★★</option><option value="3">★★★</option><option value="2">★★</option><option value="1">★</option></select>
+<select id="mc"><option value="all">Alle Kategorien</option><option value="Vorspeise">Vorspeise</option><option value="Hauptgericht">Hauptgericht</option><option value="Dessert">Dessert</option><option value="Quest-Gericht">Quest-Gericht</option></select>
+<input id="mq" placeholder="Gericht oder Zutat suchen">
+</div><p class="muted"><span id="mcount" class="count"></span> Rezepte. Zusammengetragen aus mehreren quellenabgeglichenen Guides (Basisspiel + alle DLCs).</p></div><div id="mlist"></div></section>
+
+<section id="storage" class="hidden"><div class="panel"><h3>Sammlung sichern</h3><p class="muted">Dein Sammelstand liegt nur in diesem Browser. Bei Browserwechsel, neuem Handy oder "Daten löschen" geht er sonst verloren – hier kannst du ihn als Datei sichern und wiederherstellen.</p><button id="btnExport">⬇️ Sammlung exportieren</button> <button id="btnImport">⬆️ Sammlung importieren</button><input type="file" id="fileImport" accept="application/json" class="hidden"></div>
+<div class="panel"><h3>Dein Lagersystem</h3><p><b>Prinzip:</b> 1 kleiner Tisch = sichtbare Materialgruppe, darunter/zugeordnet jeweils 2 große Truhen. Ähnliche seltene Materialien dürfen zusammen.</p><p><b>Priorität:</b> Dauerverbrauch wie Holz, Stein, Sand, Lehm, Kohle und Erze großzügig lagern. Spezial-/Questmaterialien zusammenfassen.</p><p class="muted">Die genaue Raumbelegung ergänzen wir nach deinem real aufgebauten Lager, nicht nach einer theoretischen Tabelle.</p></div></section>
+</main>
+<script>
+const critters=[["Dreamlight Valley","Hauptplatz","Eichhörnchen","Klassisch","Erdnüsse","Einfach hingehen."],["Dreamlight Valley","Hauptplatz","Eichhörnchen","Rot","Erdnüsse","Einfach hingehen."],["Dreamlight Valley","Hauptplatz","Eichhörnchen","Grau","Erdnüsse","Einfach hingehen."],["Dreamlight Valley","Hauptplatz","Eichhörnchen","Schwarz","Erdnüsse","Einfach hingehen."],["Dreamlight Valley","Hauptplatz","Eichhörnchen","Weiß","Erdnüsse","Einfach hingehen."],["Dreamlight Valley","Friedliche Wiese","Kaninchen","Klassisch","Karotte","Hinterherlaufen, bis es stehen bleibt."],["Dreamlight Valley","Friedliche Wiese","Kaninchen","Braun","Karotte","Hinterherlaufen, bis es stehen bleibt."],["Dreamlight Valley","Friedliche Wiese","Kaninchen","Schwarz","Karotte","Hinterherlaufen, bis es stehen bleibt."],["Dreamlight Valley","Friedliche Wiese","Kaninchen","Weiß","Karotte","Hinterherlaufen, bis es stehen bleibt."],["Dreamlight Valley","Friedliche Wiese","Kaninchen","Gesprenkelt","Karotte","Hinterherlaufen, bis es stehen bleibt."],["Dreamlight Valley","Schillernder Strand","Meeresschildkröte","Klassisch","Seetang","Warten, bis sie aus dem Panzer kommt."],["Dreamlight Valley","Schillernder Strand","Meeresschildkröte","Braun","Seetang","Warten, bis sie aus dem Panzer kommt."],["Dreamlight Valley","Schillernder Strand","Meeresschildkröte","Schwarz","Seetang","Warten, bis sie aus dem Panzer kommt."],["Dreamlight Valley","Schillernder Strand","Meeresschildkröte","Weiß","Seetang","Warten, bis sie aus dem Panzer kommt."],["Dreamlight Valley","Schillernder Strand","Meeresschildkröte","Lila","Seetang","Warten, bis sie aus dem Panzer kommt."],["Dreamlight Valley","Wald der Tapferkeit","Waschbär","Klassisch","Blaubeere","Nur gehen, wenn der Kopf unten ist."],["Dreamlight Valley","Wald der Tapferkeit","Waschbär","Schwarz","Blaubeere","Nur gehen, wenn der Kopf unten ist."],["Dreamlight Valley","Wald der Tapferkeit","Waschbär","Rot","Blaubeere","Nur gehen, wenn der Kopf unten ist."],["Dreamlight Valley","Wald der Tapferkeit","Waschbär","Weiß","Blaubeere","Nur gehen, wenn der Kopf unten ist."],["Dreamlight Valley","Wald der Tapferkeit","Waschbär","Blau","Blaubeere","Nur gehen, wenn der Kopf unten ist."],["Dreamlight Valley","Lichtung des Vertrauens","Krokodil","Klassisch","Hummer","Nur gehen, wenn der Kopf unten ist."],["Dreamlight Valley","Lichtung des Vertrauens","Krokodil","Blau","Hummer","Nur gehen, wenn der Kopf unten ist."],["Dreamlight Valley","Lichtung des Vertrauens","Krokodil","Golden","Hummer","Nur gehen, wenn der Kopf unten ist."],["Dreamlight Valley","Lichtung des Vertrauens","Krokodil","Pink","Hummer","Nur gehen, wenn der Kopf unten ist."],["Dreamlight Valley","Lichtung des Vertrauens","Krokodil","Rot","Hummer","Nur gehen, wenn der Kopf unten ist."],["Dreamlight Valley","Lichtung des Vertrauens","Krokodil","Weiß","Hummer","Nur gehen, wenn der Kopf unten ist."],["Dreamlight Valley","Sonnige Ebene","Sonnenvogel","Smaragd","Passende Blume","Einfach hingehen."],["Dreamlight Valley","Sonnige Ebene","Sonnenvogel","Gold","Passende Blume","Einfach hingehen."],["Dreamlight Valley","Sonnige Ebene","Sonnenvogel","Orchidee","Passende Blume","Einfach hingehen."],["Dreamlight Valley","Sonnige Ebene","Sonnenvogel","Rot","Passende Blume","Einfach hingehen."],["Dreamlight Valley","Sonnige Ebene","Sonnenvogel","Türkis","Passende Blume","Einfach hingehen."],["Dreamlight Valley","Eisige Höhen","Fuchs","Klassisch","Weißer Stör","Hinterherlaufen, bis er stehen bleibt."],["Dreamlight Valley","Eisige Höhen","Fuchs","Blau","Weißer Stör","Hinterherlaufen, bis er stehen bleibt."],["Dreamlight Valley","Eisige Höhen","Fuchs","Rot","Weißer Stör","Hinterherlaufen, bis er stehen bleibt."],["Dreamlight Valley","Eisige Höhen","Fuchs","Schwarz","Weißer Stör","Hinterherlaufen, bis er stehen bleibt."],["Dreamlight Valley","Eisige Höhen","Fuchs","Weiß","Weißer Stör","Hinterherlaufen, bis er stehen bleibt."],["Dreamlight Valley","Vergessenes Land","Rabe","Klassisch","5-Sterne-Gericht","Warten, bis er seine Kreise beendet."],["Dreamlight Valley","Vergessenes Land","Rabe","Blau","5-Sterne-Gericht","Warten, bis er seine Kreise beendet."],["Dreamlight Valley","Vergessenes Land","Rabe","Braun","5-Sterne-Gericht","Warten, bis er seine Kreise beendet."],["Dreamlight Valley","Vergessenes Land","Rabe","Rot","5-Sterne-Gericht","Warten, bis er seine Kreise beendet."],["Dreamlight Valley","Vergessenes Land","Rabe","Weiß","5-Sterne-Gericht","Warten, bis er seine Kreise beendet."],["A Rift in Time","Grasland","Capybara","Klassisch (orange/rotbraun)","Kohl","Einfach hingehen."],["A Rift in Time","Promenade","Capybara","Schwarz/Weiß","Kohl","Einfach hingehen."],["A Rift in Time","Hain","Capybara","Blau gestreift","Kohl","Einfach hingehen."],["A Rift in Time","Lagune","Capybara","Grau gefleckt","Kohl","Einfach hingehen."],["A Rift in Time","Lagune","Capybara","Rot/Weiß gestreift","Kohl","Einfach hingehen."],["A Rift in Time","Ebene","Kobra","Klassisch (lila/blau/schwarz wirkend)","Ei","Nur gehen, wenn der Kopf unten ist."],["A Rift in Time","Ödnis","Kobra","Blau/Rot gestreift","Ei","Nur gehen, wenn der Kopf unten ist."],["A Rift in Time","Grenzland","Kobra","Grün/Weiß gestreift","Ei","Nur gehen, wenn der Kopf unten ist."],["A Rift in Time","Oase","Kobra","Pink gefleckt","Ei","Nur gehen, wenn der Kopf unten ist."],["A Rift in Time","Grenzland","Kobra","Gelb/Lila gestreift","Ei","Nur gehen, wenn der Kopf unten ist."],["A Rift in Time","Docks","Affe","Klassisch","5-Sterne-Dessert","Mehrmals hinterherlaufen."],["A Rift in Time","Ruinen","Affe","Beige","5-Sterne-Dessert","Mehrmals hinterherlaufen."],["A Rift in Time","Innenhof","Affe","Schwarz/Braun","5-Sterne-Dessert","Mehrmals hinterherlaufen."],["A Rift in Time","Ruinen","Affe","Schwarz/Grau","5-Sterne-Dessert","Mehrmals hinterherlaufen."],["A Rift in Time","Aussichtspunkt","Affe","Rot/Beige","5-Sterne-Dessert","Mehrmals hinterherlaufen."],["The Storybook Vale","Bibliothek der Geschichten","Eule","Braun","Gerste","Einfach hingehen."],["The Storybook Vale","Bibliothek der Geschichten","Eule","Dunkel","Gerste","Einfach hingehen."],["The Storybook Vale","Die Bindung","Eule","Weiß","Gerste","Einfach hingehen."],["The Storybook Vale","Die Bindung","Eule","Lila","Gerste","Einfach hingehen."],["The Storybook Vale","Wilder Wald","Baby-Drache","Blau","Reines Eis / Magma","Warten, bis er sich beruhigt."],["The Storybook Vale","Gefallene Festung","Baby-Drache","Grün","Reines Eis / Magma","Warten, bis er sich beruhigt."],["The Storybook Vale","Bohnenranken-Sümpfe","Baby-Drache","Lila","Reines Eis / Magma","Warten, bis er sich beruhigt."],["The Storybook Vale","Teekannenfälle","Baby-Drache","Rot","Reines Eis / Magma","Warten, bis er sich beruhigt."],["The Storybook Vale","Wilder Wald","Baby-Drache","Türkis","Reines Eis / Magma","Warten, bis er sich beruhigt."],["The Storybook Vale","Elysische Felder","Pegasus","Schwarz","5-Sterne-Gemüsegericht","Annähern und füttern."],["The Storybook Vale","Feurige Ebenen","Pegasus","Blau","5-Sterne-Gemüsegericht","Annähern und füttern."],["The Storybook Vale","Olymp","Pegasus","Pfirsich","5-Sterne-Gemüsegericht","Annähern und füttern."],["Wishblossom Ranch","Wishblossom Ranch","Gans","Klassisch","Rote Johannisbeeren","Annähern, Verstecken abwarten, dann füttern."],["Wishblossom Ranch","Silver Summit","Gans","Schwarz","Rote Johannisbeeren","Annähern, Verstecken abwarten, dann füttern."],["Wishblossom Ranch","Wishing Way","Gans","Blau","Rote Johannisbeeren","Annähern, Verstecken abwarten, dann füttern."],["Wishblossom Ranch","Delver Dale","Gans","Golden","Rote Johannisbeeren","Annähern, Verstecken abwarten, dann füttern."],["Wishblossom Ranch","Ranch Highlands","Gans","True North","Rote Johannisbeeren","Annähern, Verstecken abwarten, dann füttern."],["Wishblossom Ranch","Runway River","Stinktier","Klassisch","Nadelkissen-Pfirsich / Knopfpilz","Vorsichtig annähern, stehenbleiben wenn der Schweif aufgerichtet wird."],["Wishblossom Ranch","Paisley Park","Stinktier","Braun","Nadelkissen-Pfirsich / Knopfpilz","Vorsichtig annähern, stehenbleiben wenn der Schweif aufgerichtet wird."],["Wishblossom Ranch","Haute Plateau","Stinktier","Gemustert","Nadelkissen-Pfirsich / Knopfpilz","Vorsichtig annähern, stehenbleiben wenn der Schweif aufgerichtet wird."],["Wishblossom Ranch","Modish Marsh","Stinktier","Weiß","Nadelkissen-Pfirsich / Knopfpilz","Vorsichtig annähern, stehenbleiben wenn der Schweif aufgerichtet wird."],["Wishblossom Ranch","Sundae Shores","Süße Biene","Klassisch","Honigkoralle","Annähern und füttern."],["Wishblossom Ranch","Hunny Falls","Süße Biene","Blau","Honigkoralle","Annähern und füttern."],["Wishblossom Ranch","Pixie Flats","Süße Biene","Pink","Honigkoralle","Annähern und füttern."],["Wishblossom Ranch","Hundred-Acre Fields","Süße Biene","Weiß","Honigkoralle","Annähern und füttern."],["Honeyglow Woods","Drowsybloom Acre","Igel","Klassisch","Pufflebud Pods / Golden Honey","Annähern und füttern."],["Honeyglow Woods","Gloommeadow","Igel","Grün","Pufflebud Pods / Golden Honey","Annähern und füttern."],["Honeyglow Woods","Nectar Apiary","Igel","Orange","Pufflebud Pods / Golden Honey","Annähern und füttern."],["Honeyglow Woods","Braveheart Grove","Igel","Gelb","Pufflebud Pods / Golden Honey","Annähern und füttern."],["A Rift in Time","Hain","Capybara","Toon","Kohl","Einfach hingehen."],["A Rift in Time","Ödnis","Kobra","Toon","Ei","Nur gehen, wenn der Kopf unten ist."],["A Rift in Time","Docks","Affe","Toon","5-Sterne-Dessert","Mehrmals hinterherlaufen."],["The Storybook Vale","Elysische Felder","Pegasus","Pink","5-Sterne-Gemüsegericht","Hinterherlaufen, bis er stehen bleibt."],["The Storybook Vale","Schatten der Statue","Pegasus","Gelb","5-Sterne-Gemüsegericht","Hinterherlaufen, bis er stehen bleibt."]];
+const scheduleData={"Sonnenvogel|Smaragd":{"week":[[720,1440],null,[0,1440],[0,1440],null,null,[0,1440]],"weather":null},"Sonnenvogel|Gold":{"week":[[0,720],null,[0,1440],null,[0,1440],[0,1440],null],"weather":null},"Sonnenvogel|Orchidee":{"week":[null,null,null,null,null,[0,1440],null],"weather":null},"Sonnenvogel|Rot":{"week":[[720,1440],[0,1440],null,null,[0,1440],null,[0,1440]],"weather":null},"Sonnenvogel|Türkis":{"week":[[0,720],[0,1440],null,[0,1440],null,[0,1440],null],"weather":null},"Eichhörnchen|Schwarz":{"week":[[0,720],null,[0,1440],null,[0,1440],[0,1440],null],"weather":null},"Eichhörnchen|Klassisch":{"week":[[720,1440],[0,1440],null,null,[0,1440],null,[0,1440]],"weather":null},"Eichhörnchen|Grau":{"week":[[720,1440],null,[0,1440],[0,1440],null,null,[0,1440]],"weather":null},"Eichhörnchen|Rot":{"week":[[0,720],[0,1440],null,[0,1440],null,[0,1440],null],"weather":null},"Eichhörnchen|Weiß":{"week":[[0,1440],null,null,null,null,null,null],"weather":null},"Krokodil|Blau":{"week":[[0,720],[0,1440],null,[0,1440],null,[0,1440],null],"weather":null},"Krokodil|Klassisch":{"week":[[720,1440],[0,1440],null,null,[0,1440],null,[0,1440]],"weather":null},"Krokodil|Golden":{"week":[[0,720],null,[0,1440],null,[0,1440],[0,1440],null],"weather":null},"Krokodil|Pink":{"week":[null,null,null,null,null,null,[0,1440]],"weather":null},"Krokodil|Rot":{"week":[[720,1440],null,[0,1440],[0,1440],null,null,[0,1440]],"weather":null},"Krokodil|Weiß":{"week":[[0,1440],null,null,null,null,null,null],"weather":null},"Kaninchen|Schwarz":{"week":[[0,720],[0,1440],null,[0,1440],null,[0,1440],null],"weather":null},"Kaninchen|Braun":{"week":[[720,1440],null,[0,1440],[0,1440],null,null,[0,1440]],"weather":null},"Kaninchen|Gesprenkelt":{"week":[null,null,null,null,[0,1440],null,null],"weather":null},"Kaninchen|Klassisch":{"week":[[720,1440],[0,1440],null,null,[0,1440],null,[0,1440]],"weather":null},"Kaninchen|Weiß":{"week":[[0,720],null,[0,1440],null,[0,1440],[0,1440],null],"weather":null},"Rabe|Blau":{"week":[[0,720],null,[0,1440],null,[0,1440],[0,1440],null],"weather":null},"Rabe|Braun":{"week":[null,null,[0,1440],null,null,null,null],"weather":null},"Rabe|Klassisch":{"week":[[720,1440],[0,1440],null,null,[0,1440],null,[0,1440]],"weather":null},"Rabe|Rot":{"week":[[0,720],[0,1440],null,[0,1440],null,[0,1440],null],"weather":null},"Rabe|Weiß":{"week":[[720,1440],null,[0,1440],[0,1440],null,null,[0,1440]],"weather":null},"Meeresschildkröte|Schwarz":{"week":[null,[0,1440],null,null,null,null,null],"weather":null},"Meeresschildkröte|Braun":{"week":[[0,720],[0,1440],null,[0,1440],null,[0,1440],null],"weather":null},"Meeresschildkröte|Klassisch":{"week":[[720,1440],[0,1440],null,null,[0,1440],null,[0,1440]],"weather":null},"Meeresschildkröte|Lila":{"week":[[0,720],null,[0,1440],null,[0,1440],[0,1440],null],"weather":null},"Meeresschildkröte|Weiß":{"week":[[720,1440],null,[0,1440],[0,1440],null,null,[0,1440]],"weather":null},"Fuchs|Schwarz":{"week":[[720,1440],null,[0,1440],[0,1440],null,null,[0,1440]],"weather":null},"Fuchs|Blau":{"week":[[0,720],null,[0,1440],null,[0,1440],[0,1440],null],"weather":null},"Fuchs|Klassisch":{"week":[[0,720],[0,1440],null,[0,1440],null,[0,1440],null],"weather":null},"Fuchs|Rot":{"week":[null,null,null,null,null,null,[0,1440]],"weather":null},"Fuchs|Weiß":{"week":[[720,1440],[0,1440],null,null,[0,1440],null,[0,1440]],"weather":null},"Waschbär|Schwarz":{"week":[[720,1440],null,[0,1440],[0,1440],null,null,[0,1440]],"weather":null},"Waschbär|Blau":{"week":[null,null,null,[0,1440],null,null,null],"weather":null},"Waschbär|Klassisch":{"week":[[720,1440],[0,1440],null,null,[0,1440],null,[0,1440]],"weather":null},"Waschbär|Rot":{"week":[[0,720],[0,1440],null,[0,1440],null,[0,1440],null],"weather":null},"Waschbär|Weiß":{"week":[[0,720],null,[0,1440],null,[0,1440],[0,1440],null],"weather":null},"Capybara|Schwarz/Weiß":{"week":[[720,1440],null,[0,1440],null,[0,1440],[720,1440],[720,1440]],"weather":null},"Capybara|Blau gestreift":{"week":[null,[0,720],[0,720],[0,720],[0,1440],null,[0,1440]],"weather":null},"Capybara|Klassisch (orange/rotbraun)":{"week":[[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440]],"weather":null},"Capybara|Grau gefleckt":{"week":[[0,1440],[720,1440],[720,1440],[720,1440],null,[0,1440],null],"weather":null},"Capybara|Rot/Weiß gestreift":{"week":[null,null,null,null,null,null,[0,1440]],"weather":null},"Capybara|Toon":{"week":[[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440]],"weather":null},"Kobra|Blau/Rot gestreift":{"week":[[0,1440],[720,1440],[720,1440],null,[0,1440],null,[720,1440]],"weather":null},"Kobra|Klassisch (lila/blau/schwarz wirkend)":{"week":[[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440]],"weather":null},"Kobra|Grün/Weiß gestreift":{"week":[null,null,null,null,[0,1440],null,null],"weather":null},"Kobra|Pink gefleckt":{"week":[[0,720],[0,1440],null,[0,720],[0,720],[0,1440],null],"weather":null},"Kobra|Gelb/Lila gestreift":{"week":[[720,1440],null,[0,1440],[720,1440],[720,1440],null,[0,1440]],"weather":null},"Kobra|Toon":{"week":[[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440]],"weather":null},"Affe|Beige":{"week":[[0,1440],[720,1440],null,[720,1440],[0,1440],[720,1440],null],"weather":null},"Affe|Schwarz/Braun":{"week":[[720,1440],null,[720,1440],[0,1440],[720,1440],null,[0,1440]],"weather":null},"Affe|Schwarz/Grau":{"week":[null,null,[0,1440],null,null,null,null],"weather":null},"Affe|Klassisch":{"week":[[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440]],"weather":null},"Affe|Rot/Beige":{"week":[null,[0,720],[0,1440],[0,720],null,[0,720],[0,1440]],"weather":null},"Affe|Toon":{"week":[[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440]],"weather":null},"Eule|Braun":{"week":[null,[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],null],"weather":null},"Eule|Dunkel":{"week":[[0,1440],null,null,null,null,null,[0,1440]],"weather":null},"Eule|Weiß":{"week":[[900,1200],[900,1200],[900,1200],[900,1200],[900,1200],[900,1200],[900,1200]],"weather":null},"Eule|Lila":{"week":[[0,540],[0,540],[0,540],[0,540],[0,540],[0,540],[0,540]],"weather":null},"Baby-Drache|Blau":{"week":[null,null,[0,1440],[0,1440],[0,1440],[0,1440],null],"weather":null},"Baby-Drache|Grün":{"week":[[600,1080],[600,1080],[600,1080],[600,1080],[600,1080],null,null],"weather":null},"Baby-Drache|Lila":{"week":[[0,720],[0,720],[0,720],[0,720],[0,720],[0,720],[0,720]],"weather":null},"Baby-Drache|Rot":{"week":[[0,1440],[0,1440],null,null,null,null,[0,1440]],"weather":null},"Baby-Drache|Türkis":{"week":[[0,1440],null,null,[0,1440],[0,1440],[0,1440],[0,1440]],"weather":null},"Pegasus|Schwarz":{"week":[[0,1440],null,null,[0,1440],[0,1440],[0,1440],[0,1440]],"weather":null},"Pegasus|Blau":{"week":[null,[0,1440],[0,1440],[0,1440],null,null,null],"weather":null},"Pegasus|Pfirsich":{"week":[[360,840],[360,840],[360,840],[360,840],[360,840],[360,840],[360,840]],"weather":null},"Pegasus|Pink":{"week":[[0,1440],null,null,null,[0,1440],[0,1440],[0,1440]],"weather":null},"Pegasus|Gelb":{"week":[null,null,[1080,1440],[1080,1440],[1080,1440],[1080,1440],[1080,1440]],"weather":null},"Gans|Schwarz":{"week":[[300,660],[300,660],[300,660],[300,660],[300,660],[300,660],[300,660]],"weather":null},"Gans|Blau":{"week":[[1080,1200],[1080,1200],[1080,1200],[1080,1200],[1080,1200],[1080,1200],[1080,1200]],"weather":null},"Gans|Golden":{"week":[[[420,480],[1140,1200]],[[420,480],[1140,1200]],[[420,480],[1140,1200]],[[420,480],[1140,1200]],[[420,480],[1140,1200]],[[420,480],[1140,1200]],[[420,480],[1140,1200]]],"weather":null},"Gans|Klassisch":{"week":[[0,1440],[0,1440],null,[0,1440],null,[0,1440],null],"weather":null},"Gans|True North":{"week":[null,null,[0,1440],null,[0,1440],null,[0,1440]],"weather":null},"Stinktier|Braun":{"week":[[720,1440],[720,1440],null,[720,1440],null,[720,1440],null],"weather":null},"Stinktier|Gemustert":{"week":[[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440]],"weather":"Nur bei starker Bewölkung oder Regen"},"Stinktier|Klassisch":{"week":[[0,720],[0,720],[0,720],[0,720],[0,720],[0,720],[0,720]],"weather":null},"Stinktier|Weiß":{"week":[[720,1440],null,[720,1440],null,[720,1440],null,[720,1440]],"weather":null},"Süße Biene|Blau":{"week":[[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440]],"weather":"Nur bei klarem oder leicht bewölktem Wetter"},"Süße Biene|Pink":{"week":[[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440]],"weather":null},"Süße Biene|Klassisch":{"week":[[420,1200],[420,1200],[420,1200],[420,1200],[420,1200],[420,1200],[420,1200]],"weather":null},"Süße Biene|Weiß":{"week":[[1200,1440],[1200,1440],[1200,1440],[1200,1440],[1200,1440],[1200,1440],[1200,1440]],"weather":null},"Igel|Klassisch":{"week":[[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440],[0,1440]],"weather":null},"Igel|Grün":{"week":[[0,720],[0,720],[0,720],[0,720],[0,720],[0,720],[0,720]],"weather":null},"Igel|Orange":{"week":[[720,1440],null,null,[720,1440],null,null,[720,1440]],"weather":null},"Igel|Gelb":{"week":[[720,1440],[720,1440],[720,1440],[720,1440],[720,1440],[720,1440],[720,1440]],"weather":null}};
+critters.forEach(x=>x.push(scheduleData[x[2]+'|'+x[3]]));
+const resources=[["Dunkles Holz", "Material", "Dreamlight Valley", "Vergessenes Land", "Am Boden bei Bäumen", "50"], ["Trockenes Holz", "Material", "Dreamlight Valley", "Sonnige Ebene · Eisige Höhen · Vergessenes Land", "Am Boden bei Bäumen", "25"], ["Hartholz", "Material", "Dreamlight Valley / Wishblossom Ranch", "Wald der Tapferkeit · Lichtung des Vertrauens · Sonnige Ebene · Eisige Höhen · Pixie Acres", "Am Boden bei Bäumen", "10"], ["Weichholz", "Material", "Dreamlight Valley / A Rift in Time", "Hauptplatz · Friedliche Wiese · Wald der Tapferkeit · Lichtung des Vertrauens · Landung der Uralten", "Am Boden bei Bäumen", "5"], ["Sand", "Material", "Dreamlight Valley", "Schillernder Strand", "Graben / Meeresablagerungen", "8"], ["Lehm", "Material", "Dreamlight Valley / Wishblossom Ranch", "Lichtung des Vertrauens · Sonnige Ebene · Vergessenes Land · Pixie Acres", "Graben", "20"], ["Eisenerz", "Erz", "Dreamlight Valley / Storybook Vale", "Wald der Tapferkeit · Lichtung des Vertrauens · Sonnige Ebene · Eisige Höhen · Vergessenes Land · Vitalys-Mine · Die Bindung · Everafter", "Bergbau", "10"], ["Goldnugget", "Erz", "Dreamlight Valley / Storybook Vale", "Eisige Höhen · Sonnige Ebene · Vergessenes Land · Vitalys-Mine · Mythopia", "Bergbau", "20"], ["Kupfer", "Erz", "A Rift in Time", "Landung der Uralten · Funkelnde Dünen · Wildes Gewirr", "Bergbau", "15"], ["Quarz", "Mineral", "A Rift in Time", "Landung der Uralten", "Bergbau", "20"], ["Zinn", "Erz", "A Rift in Time", "Funkelnde Dünen", "Bergbau", "25"], ["Zink", "Erz", "A Rift in Time", "Wildes Gewirr", "Bergbau", "30"], ["Tropenholz", "Material", "A Rift in Time", "Wildes Gewirr", "Am Boden sammeln", "40"], ["Silbererz", "Erz", "Wishblossom Ranch", "Wishing Alps", "Bergbau", "2"], ["Eichenblätter", "Material", "Honeyglow Woods", "Honeyglow Woods", "Sammeln", "15"], ["Driftwood", "Material", "Honeyglow Woods", "Honeyglow Woods", "Sammeln", ""], ["Soft Limestone", "Material", "Honeyglow Woods", "Honeyglow Woods", "Bergbau / Hindernisse", ""], ["Honey Agate", "Edelstein", "Honeyglow Woods", "Honeyglow Woods", "Bergbau", ""], ["Amethyst", "Edelstein", "Dreamlight Valley", "Eisige Höhen · Vergessenes Land", "Bergbau", "500"], ["Aquamarin", "Edelstein", "Dreamlight Valley", "Schillernder Strand · Wald der Tapferkeit", "Bergbau", "250"], ["Citrin", "Edelstein", "Dreamlight Valley", "Lichtung des Vertrauens · Sonnige Ebene", "Bergbau", "380"], ["Diamant", "Edelstein", "Dreamlight Valley", "Vergessenes Land", "Bergbau", "600"], ["Smaragd", "Edelstein", "Dreamlight Valley", "Wald der Tapferkeit · Lichtung des Vertrauens", "Bergbau", "325"], ["Granat", "Edelstein", "Dreamlight Valley", "Hauptplatz · Friedliche Wiese", "Bergbau", "160"], ["Peridot", "Edelstein", "Dreamlight Valley", "Friedliche Wiese · Schillernder Strand", "Bergbau", "200"], ["Topas", "Edelstein", "Dreamlight Valley", "Hauptplatz", "Bergbau", "240"], ["Turmalin", "Edelstein", "Dreamlight Valley", "Sonnige Ebene · Eisige Höhen", "Bergbau", "420"], ["Blaubeere", "Frucht", "Dreamlight Valley", "Schillernder Strand · Wald der Tapferkeit", "Strauch", "29"], ["Himbeere", "Frucht", "Dreamlight Valley", "Hauptplatz · Friedliche Wiese", "Strauch", "21"], ["Stachelbeere", "Frucht", "Dreamlight Valley", "Vergessenes Land · Eisige Höhen", "Strauch", "50"], ["Apfel", "Frucht", "Dreamlight Valley", "Hauptplatz · Vergessenes Land", "Baum", "25"], ["Banane", "Frucht", "Dreamlight Valley", "Friedliche Wiese · Schillernder Strand", "Baum", "29"], ["Kirsche", "Frucht", "Dreamlight Valley", "Sonnige Ebene · Eisige Höhen", "Baum", "42"], ["Zitrone", "Frucht", "Dreamlight Valley", "Wald der Tapferkeit · Lichtung des Vertrauens", "Baum", "33"], ["Kakaobohne", "Frucht", "Dreamlight Valley", "Lichtung des Vertrauens · Sonnige Ebene", "Baum", "38"], ["Erdbeere", "Frucht", "A Rift in Time", "Docks · Innenhof", "Strauch", "23"], ["Nestling Pear", "Frucht", "A Rift in Time", "Aussichtspunkt · Ruinen", "Strauch", "25"], ["Mandel", "Frucht", "A Rift in Time", "Wildes Gewirr", "Baum", "42"], ["Dreamango", "Frucht", "A Rift in Time", "Hain · Lagune", "Baum", "50"], ["Bambus", "Zutat/Material", "A Rift in Time", "Wildes Gewirr", "Sammeln", "80"], ["Muskat", "Frucht/Gewürz", "The Storybook Vale", "Mythopia", "Baum", "45"], ["Oliven", "Frucht", "The Storybook Vale", "Mythopia", "Baum", "35"], ["Juniper Berry", "Frucht", "Honeyglow Woods", "Honeyglow Woods", "Strauch", ""], ["Sweet Chestnut", "Frucht", "Honeyglow Woods", "Honeyglow Woods", "Baum", ""], ["Tree Resin", "Material/Zutat", "Honeyglow Woods", "Honeyglow Woods", "Amber Brushwood", ""]];
+const flowers=[["Blaue Hortensie", "Schillernder Strand"], ["Rosa Hortensie", "Schillernder Strand"], ["Lila Hortensie", "Schillernder Strand"], ["Weiß-rote Hortensie", "Schillernder Strand"], ["Blaue Sternlilie", "Wald der Tapferkeit"], ["Weiße und rosa Sternlilie", "Wald der Tapferkeit"], ["Schwarze Passionslilie", "Eisige Höhen"], ["Blaue Passionslilie", "Eisige Höhen"], ["Grüne Passionslilie", "Eisige Höhen"], ["Rote Passionslilie", "Eisige Höhen"], ["Weiße Passionslilie", "Eisige Höhen"], ["Löwenzahn", "Hauptplatz"], ["Blaue Bartfadenblume", "Hauptplatz"], ["Lila & weiße Fingerhutblume", "Honeyglow Woods"], ["Rosa & cremefarbene Fingerhutblume", "Honeyglow Woods"], ["Weiße & rosa Fingerhutblume", "Honeyglow Woods"], ["Gelb & orange Fingerhutblume", "Honeyglow Woods"], ["Lila Distel", "Honeyglow Woods"], ["Rote Distel", "Honeyglow Woods"], ["Weiße Distel", "Honeyglow Woods"], ["Gelbe Distel", "Honeyglow Woods"]];
+const stalls=[["Dreamlight Valley", "Friedliche Wiese", "Salat · Weizen · Karotte"], ["Dreamlight Valley", "Lichtung des Vertrauens", "Reis · Spinat · Okra"], ["Dreamlight Valley", "Sonnige Ebene", "Chili · Baumwolle · Zucchini · Soja"], ["Dreamlight Valley", "Eisige Höhen", "Gurke · Aubergine · Spargel"], ["Dreamlight Valley", "Vergessenes Land", "Kürbis · Kartoffel · Lauch"], ["A Rift in Time", "Landung der Uralten", "Weizen · Sellerie · Raps · Traube · Yams · Kosmische Feige"], ["A Rift in Time", "Funkelnde Dünen", "Mais · Brokkoli · Chili · Melone · Bohne · Flötenwurzel"], ["A Rift in Time", "Wildes Gewirr", "Tomate · Kohl · Rübe · Ananas · Kartoffel · Rubinlinse"], ["The Storybook Vale", "Die Bindung", "Chia · Blumenkohl · Gerste · Ringsquash"], ["The Storybook Vale", "Everafter", "Radieschen · Hafer · Rhabarber · Grüne Bohne · Feenroggen"], ["The Storybook Vale", "Mythopia", "Honigmelone · Radicchio · Elysisches Getreide · Schwarzer Pfeffer"]];
+const meals=[["Arendellian Pickled Herring","Dreamlight Valley",5,"Vorspeise","Hering, Knoblauch, Zitrone, Zwiebel, beliebiges Gewürz"],
+["Large Seafood Platter","Dreamlight Valley",5,"Vorspeise","4x beliebiges Schalentier, Zitrone"],
+["Potato Leek Soup","Dreamlight Valley",5,"Vorspeise","Kartoffel, Lauch, Milch, Knoblauch, Zwiebel"],
+["Sesame Balls","Dreamlight Valley",5,"Vorspeise","Weizen, Reis, Soja, Ingwer, Alge"],
+["Bug Platter","Dreamlight Valley",5,"Vorspeise","2x bunte Käfer, 2x rote Käfer, 1x schleimiger Käfer"],
+["Bouillabaisse","Dreamlight Valley",5,"Hauptgericht","Garnele, 2x beliebiges Schalentier, Tomate, beliebiges Gemüse"],
+["Fish Creole","Dreamlight Valley",5,"Hauptgericht","beliebiger Fisch, beliebiges Gemüse, Tomate, Knoblauch, Reis"],
+["Ghostly Fish Steak","Dreamlight Valley",5,"Hauptgericht","Hier-und-Dort-Fisch, Paprika, Spargel, Zitrone, Oregano"],
+["Greek Pizza","Dreamlight Valley",5,"Hauptgericht","Käse, Zwiebel, Tomate, Weizen, beliebiges Gewürz"],
+["Gumbo","Dreamlight Valley",5,"Hauptgericht","Chilischote, Okra, Zwiebel, Garnele, Tomate"],
+["Lancetfish Paella","Dreamlight Valley",5,"Hauptgericht","Schwertfisch, Garnele, beliebiges Schalentier, Reis, Tomate"],
+["Lobster Roll","Dreamlight Valley",5,"Hauptgericht","Hummer, Butter, Knoblauch, Zitrone, Weizen"],
+["Mediterranean Salad","Dreamlight Valley",5,"Hauptgericht","Gurke, Salat, Tomate, Zwiebel, beliebiges Gewürz"],
+["Mushu's Congee","Dreamlight Valley",5,"Hauptgericht","Eier, Knoblauch, Ingwer, Pilz, Reis"],
+["Ranch Salad","Dreamlight Valley",5,"Hauptgericht","Paprika, Mais, Salat, Zwiebel, Tomate"],
+["Ratatouille","Dreamlight Valley",5,"Hauptgericht","Aubergine, Zwiebel, Tomate, Zucchini, beliebiges Gewürz"],
+["Teriyaki Salmon","Dreamlight Valley",5,"Hauptgericht","Lachs, Ingwer, Reis, Soja, Zuckerrohr"],
+["Tuna Burger","Dreamlight Valley",5,"Hauptgericht","Thunfisch, beliebiges Gemüse, Zitrone, Zwiebel, Weizen"],
+["Aurora's Cake","Dreamlight Valley",5,"Dessert","Eier, Milch, Himbeere, Zuckerrohr, Weizen"],
+["Banana Split","Dreamlight Valley",5,"Dessert","Banana, Milch, Zuckerrohr, Slush-Eis, beliebiges Süßes"],
+["Birthday Cake","Dreamlight Valley",5,"Dessert","Butter, Kakaobohne, Eier, Zuckerrohr, Weizen"],
+["Garlic Chocolate Tart","Dreamlight Valley",5,"Dessert","Käse, Kakaobohne, Ei, Knoblauch, Weizen"],
+["Gingerbread House","Dreamlight Valley",5,"Dessert","Ingwer, Eier, Vanille, Zuckerrohr, Weizen"],
+["Minnie Cupcake","Dreamlight Valley",5,"Dessert","Butter, Milch, Weizen, Zuckerrohr, Apfel"],
+["Mermaid Cupcake","Dreamlight Valley",5,"Dessert","Butter, Milch, Weizen, Zuckerrohr, Jakobsmuschel"],
+["Pastry Cream and Fruits","Dreamlight Valley",5,"Dessert","3x beliebige Frucht, Milch, Zuckerrohr"],
+["Princess Aurora Raspberry Cupcake","Dreamlight Valley",5,"Dessert","Butter, Milch, Weizen, Zuckerrohr, Himbeere"],
+["Spaceship Earth Cupcake","Dreamlight Valley",5,"Dessert","Butter, Milch, Weizen, Zuckerrohr, Kokosnuss"],
+["Spring Egg Bowl","Dreamlight Valley",5,"Dessert","Frühlings-Ei-Gemüse, Ei-Frucht, Wildes Frühlingsei, Kakaobohne, Zuckerrohr"],
+["Stitch Cupcake","Dreamlight Valley",5,"Dessert","Butter, Milch, Weizen, Zuckerrohr, Blaubeere"],
+["Wedding Cake","Dreamlight Valley",5,"Dessert","Butter, Eier, Zuckerrohr, Vanille, Weizen"],
+["The Wazowski Special","Dreamlight Valley",5,"Dessert","Kaffeebohnen, 3x Zucker, Pflanzliche Sahne"],
+["Sulley's Coffee","Dreamlight Valley",5,"Dessert","5x Kaffeebohnen"],
+["Bunuelos","Dreamlight Valley",4,"Vorspeise","Käse, Ei, Weizen, Milch"],
+["Creamy Soup","Dreamlight Valley",4,"Vorspeise","Kartoffel, beliebiges Gemüse, Milch, beliebiges Gewürz"],
+["Dream Fizz","Dreamlight Valley",4,"Vorspeise","Dreamlight-Frucht, Weizen, Zuckerrohr, Slush-Eis"],
+["Gazpacho","Dreamlight Valley",4,"Vorspeise","Gurke, Tomate, Zwiebel, beliebiges Gewürz"],
+["Pickled Herring","Dreamlight Valley",4,"Vorspeise","Hering, Zitrone, Zwiebel, beliebiges Gewürz"],
+["Poached Basil-Butter Sturgeon","Dreamlight Valley",4,"Vorspeise","Weißer Stör, Basilikum, Butter, Zitrone"],
+["Pumpkin Soup","Dreamlight Valley",4,"Vorspeise","Kürbis, Ingwer, Milch, beliebiges Gemüse"],
+["Souffle","Dreamlight Valley",4,"Vorspeise","Käse, Eier, Milch, Butter"],
+["Tea Sandwiches","Dreamlight Valley",4,"Vorspeise","beliebiger Fisch, Kirsche, Mais, Weizen"],
+["Basil Omelet","Dreamlight Valley",4,"Hauptgericht","Basilikum, Käse, Eier, Milch"],
+["Chowder","Dreamlight Valley",4,"Hauptgericht","beliebiges Schalentier, beliebiges Gemüse, Milch, Kartoffel"],
+["Classic Frankfurter","Dreamlight Valley",4,"Hauptgericht","Wild, Geflügel, Schwein, Weizen"],
+["Creamy Garlic Scallops","Dreamlight Valley",4,"Hauptgericht","Jakobsmuscheln, Butter, Knoblauch, Zitrone"],
+["Fish 'n' Chips","Dreamlight Valley",4,"Hauptgericht","beliebiger Fisch, Raps, Kartoffel, Weizen"],
+["Fish Pasta","Dreamlight Valley",4,"Hauptgericht","beliebiger Fisch, Knoblauch, Milch, Weizen"],
+["Fish Tacos","Dreamlight Valley",4,"Hauptgericht","beliebiger Fisch, Käse, Chilischote, Mais"],
+["Lioness Feast","Dreamlight Valley",4,"Hauptgericht","Hier-und-Dort-Fisch, Tomate, Pilz, Oregano"],
+["Magura Sushi","Dreamlight Valley",4,"Hauptgericht","Thunfisch, Ingwer, Reis, Alge"],
+["Margherita Pizza","Dreamlight Valley",4,"Hauptgericht","Käse, Tomate, beliebiges Gewürz, Weizen"],
+["Mushroom Pizza","Dreamlight Valley",4,"Hauptgericht","Pilz, Käse, Tomate, Weizen"],
+["Pan-fried Angler Fish","Dreamlight Valley",4,"Hauptgericht","Anglerfisch, Kartoffel, Tomate, Zucchini"],
+["Seafood Boil","Dreamlight Valley",4,"Hauptgericht","beliebiges Schalentier, beliebige Würze, Mais, Kartoffel"],
+["Sole Meuniere","Dreamlight Valley",4,"Hauptgericht","Seezunge, Butter, Zitrone, Weizen"],
+["Sweet Udon","Dreamlight Valley",4,"Hauptgericht","Dreamlight-Frucht, Reis, Meeresfrüchte, Süßes"],
+["Tasty Salad","Dreamlight Valley",4,"Hauptgericht","Gurke, Salat, beliebiges Gemüse, beliebiges Gewürz"],
+["Tekka Maki","Dreamlight Valley",4,"Hauptgericht","Thunfisch, Reis, Alge, Soja"],
+["Vegetarian Pizza","Dreamlight Valley",4,"Hauptgericht","2x beliebiges Gemüse, Käse, Tomate, Weizen"],
+["Vegetarian Taco","Dreamlight Valley",4,"Hauptgericht","beliebiges Gemüse, Käse, Chilischote, Mais"],
+["Veggie Casserole","Dreamlight Valley",4,"Hauptgericht","2x beliebiges Gemüse, Käse, beliebiges Gewürz"],
+["Veggie Skewers","Dreamlight Valley",4,"Hauptgericht","Paprika, Pilz, Zwiebel, Zucchini"],
+["Walleye en Papillote","Dreamlight Valley",4,"Hauptgericht","Zander, beliebiges Gemüse, Basilikum, Oregano"],
+["Wonton Soup","Dreamlight Valley",4,"Hauptgericht","Eier, Garnele, Weizen, Zwiebel"],
+["Banana Ice Cream","Dreamlight Valley",4,"Dessert","Banana, Milch, Slush-Eis, Zuckerrohr"],
+["Beignets","Dreamlight Valley",4,"Dessert","Raps, Eier, Zuckerrohr, Weizen"],
+["Carrot Cake","Dreamlight Valley",4,"Dessert","Karotte, Eier, Zuckerrohr, Weizen"],
+["Cheesecake","Dreamlight Valley",4,"Dessert","Käse, Zuckerrohr, Weizen, beliebige Frucht"],
+["Cheshire Cat Tail","Dreamlight Valley",4,"Dessert","Kakaobohne, Ei, Zuckerrohr, Weizen"],
+["Chocolate Chip Cookies","Dreamlight Valley",4,"Dessert","Kakaobohne, Butter, Zuckerrohr, Weizen"],
+["Chocolate Ice Cream","Dreamlight Valley",4,"Dessert","Kakaobohne, Milch, Slush-Eis, Zuckerrohr"],
+["Chocolate Waffles","Dreamlight Valley",4,"Dessert","Kakaobohne, Eier, Milch, Weizen"],
+["Coconut Cake","Dreamlight Valley",4,"Dessert","Kokosnuss, Eier, Zuckerrohr, Weizen"],
+["Coconut Ice Cream","Dreamlight Valley",4,"Dessert","Kokosnuss, Milch, Slush-Eis, Zuckerrohr"],
+["Crepe","Dreamlight Valley",4,"Dessert","Eier, Milch, Vanille, Weizen"],
+["Dream Fizz","Dreamlight Valley",4,"Dessert","Dreamlight-Frucht, Slush-Eis, Zuckerrohr, Weizen"],
+["Fruitcake","Dreamlight Valley",4,"Dessert","Weizen, 3x beliebige Frucht"],
+["Jam Waffles","Dreamlight Valley",4,"Dessert","beliebige Frucht, Eier, Milch, Weizen"],
+["Joyful Meal","Dreamlight Valley",4,"Dessert","Weizen, Blaubeere, Himbeere, Banana"],
+["Meringue Pie","Dreamlight Valley",4,"Dessert","Butter, Eier, Zitrone, Weizen"],
+["Mint Chocolate","Dreamlight Valley",4,"Dessert","Butter, Kakaobohne, Minze, Zuckerrohr"],
+["Peanut Butter Waffles","Dreamlight Valley",4,"Dessert","Erdnuss, Eier, Milch, Weizen"],
+["Red Fruit Sorbet","Dreamlight Valley",4,"Dessert","Stachelbeere, Himbeere, Slush-Eis, Zuckerrohr"],
+["Roasted Marshmallow","Dreamlight Valley",4,"Dessert","2x rosa Marshmallow, 2x blaues Marshmallow"],
+["S'mores","Dreamlight Valley",4,"Dessert","rosa Marshmallow, blaues Marshmallow, 2x Weizen"],
+["Spring Mimosa Eggs","Dreamlight Valley",4,"Dessert","Frühlings-Ei-Gemüse, Ei-Frucht, Wildes Frühlingsei, Basilikum"],
+["Tropical Pop","Dreamlight Valley",4,"Dessert","Kokosnuss, beliebige Frucht, Slush-Eis, Zuckerrohr"],
+["Vanilla Ice Cream","Dreamlight Valley",4,"Dessert","Milch, Slush-Eis, Zuckerrohr, Vanille"],
+["Waffles","Dreamlight Valley",4,"Dessert","Eier, Milch, Weizen, Zuckerrohr"],
+["Wonderland Cookies","Dreamlight Valley",4,"Dessert","Butter, Zuckerrohr, Vanille, Weizen"],
+["Yule Log","Dreamlight Valley",4,"Dessert","Kakaobohne, Kirsche, Vanille, Weizen"],
+["Bell Pepper Puffs","Dreamlight Valley",3,"Vorspeise","Paprika, Eier, Käse"],
+["Chili Pepper Puffs","Dreamlight Valley",3,"Vorspeise","Chilischote, Eier, Käse"],
+["Eggplant Puffs","Dreamlight Valley",3,"Vorspeise","Aubergine, Eier, Käse"],
+["Grilled Veggie Platter","Dreamlight Valley",3,"Vorspeise","Three of any vegetable"],
+["Onion Puffs","Dreamlight Valley",3,"Vorspeise","Zwiebel, Eier, Käse"],
+["Pizza","Dreamlight Valley",3,"Vorspeise","Tomate, Käse, Weizen"],
+["Porridge with Fruits","Dreamlight Valley",3,"Vorspeise","beliebige Frucht, Milch, Weizen"],
+["Potato Puffs","Dreamlight Valley",3,"Vorspeise","Kartoffel, Eier, Käse"],
+["Pottage","Dreamlight Valley",3,"Vorspeise","Kartoffel, beliebiges Gewürz, beliebiges Gemüse"],
+["Pumpkin Puffs","Dreamlight Valley",3,"Vorspeise","Kürbis, Eier, Käse"],
+["Zucchini Puffs","Dreamlight Valley",3,"Vorspeise","Zucchini, Eier, Käse"],
+["Apple Cider Glazed Salmon","Dreamlight Valley",3,"Hauptgericht","Apfel, Lachs, Zuckerrohr"],
+["Carp Salad","Dreamlight Valley",3,"Hauptgericht","Karpfen, Salat, Zitrone"],
+["Cheesy Crispy Baked Cod","Dreamlight Valley",3,"Hauptgericht","Kabeljau, Käse, Weizen"],
+["Fish Pie","Dreamlight Valley",3,"Hauptgericht","beliebiger Fisch, Butter, Weizen"],
+["Fish Risotto","Dreamlight Valley",3,"Hauptgericht","beliebiger Fisch, Butter, Reis"],
+["Fish Salad","Dreamlight Valley",3,"Hauptgericht","beliebiger Fisch, Zitrone, Salat"],
+["Fish Soup","Dreamlight Valley",3,"Hauptgericht","beliebiger Fisch, Milch, beliebiges Gemüse"],
+["Fish Steak","Dreamlight Valley",3,"Hauptgericht","beliebiger Fisch, Basilikum, Tomate"],
+["Fugu Sushi","Dreamlight Valley",3,"Hauptgericht","Fugu, Reis, Alge"],
+["Hearty Salad","Dreamlight Valley",3,"Hauptgericht","Salat, 2x beliebiges Gemüse"],
+["Kappa Maki","Dreamlight Valley",3,"Hauptgericht","Gurke, Alge, Reis"],
+["Kronk's Spinach Puffs","Dreamlight Valley",3,"Hauptgericht","Raps, Käse, Spinat"],
+["Lemon Garlic Swordfish","Dreamlight Valley",3,"Hauptgericht","Schwertfisch, Knoblauch, Zitrone"],
+["Maki","Dreamlight Valley",3,"Hauptgericht","beliebiger Fisch, Alge, Reis"],
+["Omelet","Dreamlight Valley",3,"Hauptgericht","Eier, Käse, Milch"],
+["Pan-Seared Bass & Vegetables","Dreamlight Valley",3,"Hauptgericht","Barsch, 2x beliebiges Gemüse"],
+["Pan-Seared Tilapia & Vegetables","Dreamlight Valley",3,"Hauptgericht","Tilapia, 2x beliebiges Gemüse"],
+["Sake Maki","Dreamlight Valley",3,"Hauptgericht","Reis, Lachs, Alge"],
+["Seafood Pasta","Dreamlight Valley",3,"Hauptgericht","beliebiges Schalentier, Milch, Weizen"],
+["Seafood Pie","Dreamlight Valley",3,"Hauptgericht","beliebiges Schalentier, Butter, Weizen"],
+["Seafood Soup","Dreamlight Valley",3,"Hauptgericht","beliebiges Schalentier, 2x beliebiges Gemüse"],
+["Seared Rainbow Trout","Dreamlight Valley",3,"Hauptgericht","Regenbogenforelle, Tomate, Zwiebel"],
+["Simple Fried Perch","Dreamlight Valley",3,"Hauptgericht","Flussbarsch, Butter, Weizen"],
+["Spaghetti Arrabbiata","Dreamlight Valley",3,"Hauptgericht","Chilischote, Tomate, Weizen"],
+["Spicy Baked Bream","Dreamlight Valley",3,"Hauptgericht","Brasse, Butter, Chilischote"],
+["Steamed Fugu","Dreamlight Valley",3,"Hauptgericht","Fugu, Knoblauch, Ingwer"],
+["Sweet & Sour Kingfish Steak","Dreamlight Valley",3,"Hauptgericht","Königsfisch, Zitrone, Zuckerrohr"],
+["Vegetarian Stew","Dreamlight Valley",3,"Hauptgericht","Karotte, Zwiebel, Kartoffel"],
+["Veggie Pasta","Dreamlight Valley",3,"Hauptgericht","beliebiges Gemüse, Tomate, Weizen"],
+["Veggie Pie","Dreamlight Valley",3,"Hauptgericht","beliebiges Gemüse, Butter, Weizen"],
+["\"My Hero\" Cookie","Dreamlight Valley",3,"Dessert","Butter, Weizen, beliebiges Süßes"],
+["Apple Pie","Dreamlight Valley",3,"Dessert","Apfel, Butter, Weizen"],
+["Apple Sorbet","Dreamlight Valley",3,"Dessert","Apfel, Slush-Eis, Zuckerrohr"],
+["Banana Pie","Dreamlight Valley",3,"Dessert","Banana, Butter, Weizen"],
+["Berry Salad","Dreamlight Valley",3,"Dessert","Blaubeere, Stachelbeere, Himbeere"],
+["Biscuits","Dreamlight Valley",3,"Dessert","Butter, Zuckerrohr, Weizen"],
+["Blueberry Pie","Dreamlight Valley",3,"Dessert","Blaubeere, Butter, Weizen"],
+["Cherry Pie","Dreamlight Valley",3,"Dessert","Kirsche, Butter, Weizen"],
+["Coconut Boba Tea","Dreamlight Valley",3,"Dessert","Kokosnuss, Milch, Zuckerrohr"],
+["Dream Ice Cream","Dreamlight Valley",3,"Dessert","Dreamlight-Frucht, Milch, Slush-Eis"],
+["Gooseberry Boba Tea","Dreamlight Valley",3,"Dessert","Stachelbeere, Milch, Zuckerrohr"],
+["Gray Stuff","Dreamlight Valley",3,"Dessert","beliebiges Milchprodukt oder Eier, Kakaobohne, Zuckerrohr"],
+["Halloween Gingerbread Cookies","Dreamlight Valley",3,"Dessert","Weizen, Kürbis, Ingwer"],
+["Hot Cocoa","Dreamlight Valley",3,"Dessert","Kakaobohne, Zuckerrohr, Milch"],
+["Ice Cream","Dreamlight Valley",3,"Dessert","Milch, Slush-Eis, Zuckerrohr"],
+["Mint Boba Tea","Dreamlight Valley",3,"Dessert","Minze, Milch, Zuckerrohr"],
+["Mocha","Dreamlight Valley",3,"Dessert","Kaffeebohnen, Milch, Kakaobohne"],
+["Pawpsicle","Dreamlight Valley",3,"Dessert","Slush-Eis, Zuckerrohr, beliebige Frucht (außer Apfel/Zitrone)"],
+["Raspberry Boba Tea","Dreamlight Valley",3,"Dessert","Himbeere, Milch, Zuckerrohr"],
+["Red Fruit Pie","Dreamlight Valley",3,"Dessert","Himbeere, Butter, Weizen"],
+["Root Beer","Dreamlight Valley",3,"Dessert","Ingwer, Vanille, Zuckerrohr"],
+["Snow White's Gooseberry Pie","Dreamlight Valley",3,"Dessert","Stachelbeere, Butter, Weizen"],
+["Sour Snow Cones","Dreamlight Valley",3,"Dessert","Zitrone, Slush-Eis, Zuckerrohr"],
+["Spring chocolate","Dreamlight Valley",3,"Dessert","Frühlings-Ei-Gemüse, Kakaobohne, Zuckerrohr"],
+["Whimsical Pie","Dreamlight Valley",3,"Dessert","Dreamlight-Frucht, Weizen, Butter"],
+["French Fries","Dreamlight Valley",2,"Vorspeise","Raps, Kartoffel"],
+["Green Salad","Dreamlight Valley",2,"Vorspeise","beliebiges Gemüse, Salat"],
+["Oyster Platter","Dreamlight Valley",2,"Vorspeise","Auster, Zitrone"],
+["Pasta","Dreamlight Valley",2,"Vorspeise","Weizen, Tomate"],
+["Peanut Butter Sandwich","Dreamlight Valley",2,"Vorspeise","Erdnuss, Weizen"],
+["Porridge","Dreamlight Valley",2,"Vorspeise","Milch, Weizen"],
+["Roasted Asparagus","Dreamlight Valley",2,"Vorspeise","Spargel, Raps"],
+["Sauteed Mushrooms","Dreamlight Valley",2,"Vorspeise","Pilz, Butter"],
+["Seafood Platter","Dreamlight Valley",2,"Vorspeise","Two of any shellfish"],
+["Sweet Herring","Dreamlight Valley",2,"Vorspeise","Zwiebel, Hering"],
+["Vegetable Soup","Dreamlight Valley",2,"Vorspeise","2x beliebiges Gemüse"],
+["Baked Carp","Dreamlight Valley",2,"Hauptgericht","Karpfen, Butter"],
+["Crispy Baked Cod","Dreamlight Valley",2,"Hauptgericht","Kabeljau, Weizen, Käse"],
+["Fish Sandwiches","Dreamlight Valley",2,"Hauptgericht","beliebiger Fisch, Weizen"],
+["Grilled Fish Entree","Dreamlight Valley",2,"Hauptgericht","beliebiger Fisch, beliebiges Gemüse"],
+["Marvellous Jam","Dreamlight Valley",2,"Hauptgericht","Dreamlight-Frucht, Weizen"],
+["Sake Sushi","Dreamlight Valley",2,"Hauptgericht","Lachs, Reis"],
+["Savory Fish","Dreamlight Valley",2,"Hauptgericht","beliebiger Fisch, Zitrone"],
+["Scrambled Egg","Dreamlight Valley",2,"Hauptgericht","Eier, Käse"],
+["Seafood Salad","Dreamlight Valley",2,"Hauptgericht","beliebiges Schalentier, Salat"],
+["Smoked Peanuts and Anglerfish","Dreamlight Valley",2,"Hauptgericht","Anglerfisch, Erdnüsse"],
+["Sushi","Dreamlight Valley",2,"Hauptgericht","beliebiger Fisch außer Lachs, Reis"],
+["Tamagoyaki","Dreamlight Valley",2,"Hauptgericht","Eier, Zuckerrohr"],
+["Tasty Veggies","Dreamlight Valley",2,"Hauptgericht","beliebiges Gemüse, beliebiges Gewürz"],
+["Boba Tea","Dreamlight Valley",2,"Dessert","Milch, Zucker"],
+["Caramel Apples","Dreamlight Valley",2,"Dessert","Apfel, Zuckerrohr"],
+["Chrysanthemum Tea","Dreamlight Valley",2,"Dessert","Chrysanthementee-Blätter, Blaubeeren"],
+["Fruit Sorbet","Dreamlight Valley",2,"Dessert","Slush-Eis, beliebige Frucht außer Zitrone"],
+["Jasmine tea","Dreamlight Valley",2,"Dessert","Jasmintee-Blätter, Zuckerrohr"],
+["Latte","Dreamlight Valley",2,"Dessert","Kaffeebohnen, Milch"],
+["Lemon Sorbet","Dreamlight Valley",2,"Dessert","Slush-Eis, Zitrone"],
+["Minnie's Gingerbread Cookies","Dreamlight Valley",2,"Dessert","Ingwer, Weizen"],
+["Mint Candy","Dreamlight Valley",2,"Dessert","Minze, Zuckerrohr"],
+["Mint Sorbet","Dreamlight Valley",2,"Dessert","Slush-Eis, Minze"],
+["Oolong Tea","Dreamlight Valley",2,"Dessert","Oolong-Tee-Blätter, Himbeeren"],
+["Sweet Slush","Dreamlight Valley",2,"Dessert","Slush-Eis, beliebiges Süßes außer Zuckerrohr"],
+["Cheese Platter","Dreamlight Valley",1,"Vorspeise","Käse"],
+["Crackers","Dreamlight Valley",1,"Vorspeise","Any grain"],
+["Crudites","Dreamlight Valley",1,"Vorspeise","Karotte, Zucchini, Paprika, oder Gurke"],
+["Grilled Vegetables","Dreamlight Valley",1,"Vorspeise","Mais, Aubergine, Alge, oder Mais"],
+["Hard-Boiled Eggs","Dreamlight Valley",1,"Vorspeise","Eier"],
+["Okra Soup","Dreamlight Valley",1,"Vorspeise","Okra"],
+["Puree","Dreamlight Valley",1,"Vorspeise","Kartoffel"],
+["Salad","Dreamlight Valley",1,"Vorspeise","Salat"],
+["Seafood Appetizer","Dreamlight Valley",1,"Vorspeise","beliebiges Schalentier"],
+["Tomato Soup","Dreamlight Valley",1,"Vorspeise","Tomate"],
+["Grilled Fish","Dreamlight Valley",1,"Hauptgericht","beliebiger Fisch"],
+["Hors d'Oeuvres","Dreamlight Valley",1,"Hauptgericht","beliebiges Gewürz"],
+["Leek Soup","Dreamlight Valley",1,"Hauptgericht","Lauch"],
+["Candy","Dreamlight Valley",1,"Dessert","beliebiges Süßes"],
+["Coffee","Dreamlight Valley",1,"Dessert","Kaffeebohnen"],
+["Fruit Salad","Dreamlight Valley",1,"Dessert","beliebige Frucht"],
+["Plain Snow Cones","Dreamlight Valley",1,"Dessert","Slush-Eis"],
+["Shake","Dreamlight Valley",1,"Dessert","Butter oder Milch"],
+["Arepas Con Queso","A Rift in Time",3,"Vorspeise","Käse, Mais, Agave"],
+["Baozi","A Rift in Time",4,"Vorspeise","Schwein, Weizen, Soja, beliebiges Gewürz"],
+["Barbecued Brilliant Blue Starfish","A Rift in Time",2,"Vorspeise","Blauer Glanzstern, Minze"],
+["Barbecued Pretty Pink Starfish","A Rift in Time",2,"Vorspeise","Rosa Glanzstern, Paprikagewürz"],
+["Bulgur Salad","A Rift in Time",5,"Vorspeise","Gurke, Tomate, Weizen, Minze, beliebiges Gewürz"],
+["Clam Juice","A Rift in Time",2,"Vorspeise","Muschel, Tomate"],
+["Coleslaw","A Rift in Time",2,"Vorspeise","Kohl, Karotte"],
+["Conch Ceviche","A Rift in Time",4,"Vorspeise","Meeresschnecke, Zwiebel, Tomate, Zitrone"],
+["Crab Melts","A Rift in Time",2,"Vorspeise","Krabbe, Käse"],
+["Dumplings","A Rift in Time",4,"Vorspeise","Any meat, beliebiges Gemüse, Weizen, Soja"],
+["Falafel","A Rift in Time",3,"Vorspeise","Bohnen, Kreuzkümmel, Knoblauch"],
+["Nuts and Bolts","A Rift in Time",2,"Vorspeise","Roboterfisch, Mandeln"],
+["Roasted Almonds","A Rift in Time",2,"Vorspeise","Mandeln, Agave"],
+["Royal Ice Tea","A Rift in Time",2,"Vorspeise","Majestea, Eis"],
+["Royal Latte","A Rift in Time",2,"Vorspeise","Majestea, Milch"],
+["Royal Tea","A Rift in Time",1,"Vorspeise","Majestea"],
+["Sand Worm Carpaccio Plate","A Rift in Time",2,"Vorspeise","Sandwurm, Melone"],
+["Shad Ceviche","A Rift in Time",4,"Vorspeise","Alse, Zwiebel, Tomate, Zitrone"],
+["Spicy Scorpion Skewer","A Rift in Time",2,"Vorspeise","Skorpion, Paprikagewürz"],
+["Takoyaki Stick","A Rift in Time",4,"Vorspeise","Oktopus, Eier, Alge, Soja"],
+["Thousand Needles","A Rift in Time",3,"Vorspeise","Blauer Glanzstern, Rosa Glanzstern, Kaktusbeere"],
+["Tomato Basil Soup","A Rift in Time",2,"Vorspeise","Tomate, Basilikum"],
+["Vegetarian Dumplings","A Rift in Time",3,"Vorspeise","beliebiges Gemüse, Weizen, Soja"],
+["Ajiaco","A Rift in Time",3,"Hauptgericht","Geflügel, Mais, Kartoffel"],
+["Baked Beans","A Rift in Time",2,"Hauptgericht","Schwein, Bohnen"],
+["Best Fish Forever","A Rift in Time",4,"Hauptgericht","Meeresschnecke, Roboterfisch, Sellerie, Kreuzkümmel"],
+["Biryani","A Rift in Time",5,"Hauptgericht","Geflügel, Reis, Zimt, Kreuzkümmel, Minze"],
+["Blend of the Bayou","A Rift in Time",5,"Hauptgericht","Prisma-Garnele, Reis, Sellerie, Butter, beliebiges Gewürz"],
+["Blue Starfish BBQ","A Rift in Time",2,"Hauptgericht","Blue brilliant starfish, Minze"],
+["Bony Osso Buco","A Rift in Time",4,"Hauptgericht","Skelettfisch, Trauben, Sellerie, beliebiges Gemüse"],
+["Braised Abalone Oyster","A Rift in Time",3,"Hauptgericht","Meeresschnecke, Pilz, Knoblauch"],
+["Braised Bamboo Shoots","A Rift in Time",4,"Hauptgericht","Bambus, Raps, Ingwer, Soja"],
+["Brandade de Morue","A Rift in Time",5,"Hauptgericht","Kabeljau, Kartoffel, Zitrone, Milch, Knoblauch"],
+["Burrito","A Rift in Time",4,"Hauptgericht","Any meat, Bohnen, Weizen, Kreuzkümmel"],
+["Butter Chicken","A Rift in Time",5,"Hauptgericht","Geflügel, Tomate, Zitrone, Butter, Kreuzkümmel"],
+["Cheese Burger","A Rift in Time",4,"Hauptgericht","Wild, Käse, beliebiges Gemüse, Weizen"],
+["Chicken Souvlaki","A Rift in Time",4,"Hauptgericht","Geflügel, Zitrone, Minze, Paprikagewürz"],
+["Classic Mac and Cheese","A Rift in Time",2,"Hauptgericht","Weizen, Käse"],
+["Club Sandwich","A Rift in Time",4,"Hauptgericht","Schwein, Geflügel, Tomate, Weizen"],
+["Coq en Barbouille","A Rift in Time",4,"Hauptgericht","Geflügel, Zwiebel, Trauben, beliebiges Gemüse"],
+["Cream Cheese Bagel","A Rift in Time",3,"Hauptgericht","Käse, Weizen, beliebiges Süßes"],
+["Crimson Burger","A Rift in Time",3,"Hauptgericht","Weizen, Rubinlinsen, beliebiges Gemüse"],
+["Dragon Roll Maki","A Rift in Time",4,"Hauptgericht","Zitteraal, Reis, beliebiges Gemüse, Alge"],
+["Fabulous Fajitas","A Rift in Time",4,"Hauptgericht","Geflügel, 2x beliebiges Gemüse, Weizen, Kreuzkümmel"],
+["Good Ol' Fashioned Burger","A Rift in Time",3,"Hauptgericht","Wild, Salat, Weizen"],
+["Hamburger Steak","A Rift in Time",4,"Hauptgericht","Wild, Kartoffel, Bohnen, beliebiges Gemüse"],
+["Hawaiian Pizza","A Rift in Time",5,"Hauptgericht","Schwein, Käse, Tomate, Ananas, Weizen"],
+["Jerk Chicken","A Rift in Time",4,"Hauptgericht","Geflügel, Zwiebel, Knoblauch, beliebiges Gewürz"],
+["Latkes","A Rift in Time",4,"Hauptgericht","Eier, Kartoffel, Zwiebel, Raps"],
+["Lo-Fries","A Rift in Time",3,"Hauptgericht","Flötenwurzel, Yamswurzel, Raps"],
+["Meat Pie","A Rift in Time",3,"Hauptgericht","Any meat, Butter, Weizen"],
+["Meaty Taco","A Rift in Time",5,"Hauptgericht","Wild, Mais, beliebiges Gemüse, Chilischote, Kreuzkümmel"],
+["Milky Way Stew","A Rift in Time",4,"Hauptgericht","Regenbogenforelle, Kosmische Feige, Rübe, Milch"],
+["Moqueca de Pirarucu","A Rift in Time",3,"Hauptgericht","Pirarucu, Kokosnuss, 2x beliebiges Gemüse"],
+["Nachos","A Rift in Time",3,"Hauptgericht","Käse, Mais, Chilischote"],
+["Pasta with Herbs","A Rift in Time",3,"Hauptgericht","Weizen, Butter, Kräuter"],
+["Pesto with Linguine","A Rift in Time",4,"Hauptgericht","Weizen, Butter, Knoblauch, Oregano"],
+["Pink Starfish BBQ","A Rift in Time",2,"Hauptgericht","Pink brilliant starfish, Paprikagewürz"],
+["Piquant Piranha Soup","A Rift in Time",3,"Hauptgericht","Piranha, Bambus, Chilischote"],
+["Poutine","A Rift in Time",3,"Hauptgericht","Kartoffel, Käse, Raps"],
+["Pulled Pork","A Rift in Time",4,"Hauptgericht","Schwein, Zwiebel, Tomate, Oregano"],
+["Pupusas Revueltas","A Rift in Time",3,"Hauptgericht","Geflügel, Mais, Bohnen"],
+["Rainbouillabaisse","A Rift in Time",5,"Hauptgericht","Prisma-Garnele, Regenbogenforelle, beliebige Meeresfrüchte, Tomate, beliebiges Gemüse"],
+["Ramen","A Rift in Time",3,"Hauptgericht","Schwein, Ei, Weizen"],
+["Rhapsody Roll","A Rift in Time",4,"Hauptgericht","Reis, Flötenwurzel, beliebiges Gemüse, Alge"],
+["Roast","A Rift in Time",1,"Hauptgericht","Any meat"],
+["Royal Burger","A Rift in Time",5,"Hauptgericht","Schwein, Wild, Käse, beliebiges Gemüse, Weizen"],
+["Ruby Masoor Dal","A Rift in Time",3,"Hauptgericht","Rubinlinsen, Tomate, Chilischote"],
+["Sand Stew","A Rift in Time",5,"Hauptgericht","Sandfisch, Sandwurm, Dünenhüpfer, beliebiges Gemüse, beliebiges Gewürz"],
+["Sausage and Sauerkraut Platter","A Rift in Time",3,"Hauptgericht","Schwein, Kartoffel, Kohl"],
+["Schnitzel","A Rift in Time",3,"Hauptgericht","Geflügel, Weizen, Raps"],
+["Sesame Seed Bagel","A Rift in Time",2,"Hauptgericht","Weizen, beliebiges Süßes"],
+["Shawarma","A Rift in Time",5,"Hauptgericht","Wild, Reis, Zitrone, Knoblauch, Zimt"],
+["Shish Taouk","A Rift in Time",4,"Hauptgericht","Geflügel, Zitrone, Minze, Paprikagewürz"],
+["Sweet and Sour Stir-Fry","A Rift in Time",5,"Hauptgericht","Geflügel, Brokkoli, Dreamango, Ananas, Raps"],
+["Tandoori Chicken","A Rift in Time",4,"Hauptgericht","Geflügel, Chilischote, Kreuzkümmel, Paprikagewürz"],
+["Tofu","A Rift in Time",1,"Hauptgericht","Soja"],
+["Tourtiere","A Rift in Time",4,"Hauptgericht","Wild, Kartoffel, beliebiges Gemüse, Weizen"],
+["Turkey Leg","A Rift in Time",4,"Hauptgericht","Geflügel, Kreuzkümmel, Paprikagewürz, Agave"],
+["Turnip Tartiflette","A Rift in Time",3,"Hauptgericht","Schwein, Käse, Rübe"],
+["Vegetarian Turnip Tartiflette","A Rift in Time",3,"Hauptgericht","Rübe, Pilze, Soja"],
+["Yakisoba","A Rift in Time",3,"Hauptgericht","Schwein, Kohl, Weizen"],
+["Apple Sauce","A Rift in Time",2,"Dessert","Apfel, Zimt"],
+["Basil Berry Salad","A Rift in Time",3,"Dessert","Blaubeere, Erdbeere, Basilikum"],
+["Cannoli","A Rift in Time",4,"Dessert","Ei, Käse, Butter, Weizen"],
+["Caramel Macarons","A Rift in Time",3,"Dessert","Mandeln, Eier, Agave"],
+["Charlotte Cake","A Rift in Time",3,"Dessert","Erdbeere, Weizen, Agave"],
+["Chocolate Macarons","A Rift in Time",3,"Dessert","Kakaobohne, Eier, Mandeln"],
+["Cinnamon Donut","A Rift in Time",4,"Dessert","Zimt, Eier, Weizen, beliebiges Süßes"],
+["Cotton Candy","A Rift in Time",2,"Dessert","Agave, Zuckerrohr"],
+["Croissant","A Rift in Time",2,"Dessert","Butter, Weizen"],
+["Cupcakes","A Rift in Time",4,"Dessert","Kirsche, Eier, Weizen, Agave"],
+["Danish","A Rift in Time",3,"Dessert","Any two fruit, Butter, Weizen"],
+["Dreamango Boba Tea","A Rift in Time",3,"Dessert","Dreamango, Milch, Zuckerrohr"],
+["Dole Whip","A Rift in Time",2,"Dessert","Slush-Eis, Ananas"],
+["Filled Dates","A Rift in Time",2,"Dessert","Mandel, Dattel"],
+["French Macarons","A Rift in Time",2,"Dessert","Eier, Mandeln"],
+["Fruit Milkshake","A Rift in Time",3,"Dessert","beliebige Frucht, Slush-Eis, Milch"],
+["Glazed Donut","A Rift in Time",3,"Dessert","Eier, Weizen, beliebiges Süßes"],
+["Gourmet Grubs","A Rift in Time",3,"Dessert","Meeresschnecke, Sandwurm, Skorpion"],
+["Jam Macarons","A Rift in Time",3,"Dessert","beliebige Frucht, Eier, Mandeln"],
+["Kanelbulle","A Rift in Time",4,"Dessert","Eier, Butter, Weizen, Zimt"],
+["Kouign-Amann","A Rift in Time",4,"Dessert","2x Butter, Weizen, Agave"],
+["Maamouls","A Rift in Time",3,"Dessert","Mandel, Datteln, Weizen"],
+["Makrout","A Rift in Time",4,"Dessert","Datteln, Weizen, Raps, Zimt"],
+["Melon Boba Tea","A Rift in Time",3,"Dessert","Melone, Milch, Zuckerrohr"],
+["Mooncake","A Rift in Time",4,"Dessert","Bohnen, Weizen, Raps, Agave"],
+["Nestling Crepe","A Rift in Time",4,"Dessert","Nestling-Birne, Eier, Milch, Weizen"],
+["Pasteis de Nata","A Rift in Time",4,"Dessert","Mais, Ei, Milch, Vanille"],
+["Pear Upside-Down Cake","A Rift in Time",3,"Dessert","Nestling-Birne, Eier, Weizen"],
+["Pineapple Soft Serve","A Rift in Time",2,"Dessert","Ananas, Slush-Eis"],
+["Popcorn","A Rift in Time",2,"Dessert","Mais, Raps"],
+["Raspberry Jam Sandwich","A Rift in Time",2,"Dessert","Weizen, Himbeere"],
+["Red Velvet","A Rift in Time",5,"Dessert","Ei, Käse, Kakaobohne, Vanille, Weizen"],
+["Spicy Macarons","A Rift in Time",3,"Dessert","Chilischote, Eier, Mandeln"],
+["Spiky Berry Pie","A Rift in Time",5,"Dessert","Kaktusbeere, Erdbeere, Butter, Weizen, beliebiges Gewürz"],
+["Stellar Milkshake","A Rift in Time",3,"Dessert","Kosmische Feige, Slush-Eis, Milch"],
+["Strawberry Pie","A Rift in Time",3,"Dessert","Erdbeere, Butter, Weizen"],
+["Strawberry Shortcake","A Rift in Time",3,"Dessert","Weizen, Ei, Erdbeere"],
+["Stuffed Dates","A Rift in Time",2,"Dessert","Mandeln, Datteln"],
+["Sugar-Free Banana Muffin","A Rift in Time",2,"Dessert","Banana, Weizen"],
+["Sugar-Free Blueberry Muffin","A Rift in Time",2,"Dessert","Blaubeere, Weizen"],
+["Sugar-Free Fruit Explosion Muffin","A Rift in Time",3,"Dessert","Any two fruit, Weizen, Agave"],
+["Sugar-Free Fruit Muffin","A Rift in Time",2,"Dessert","beliebige Frucht, Weizen"],
+["Sweet Popcorn","A Rift in Time",3,"Dessert","Mais, Raps, Agave"],
+["Sweet Tofu","A Rift in Time",2,"Dessert","beliebige Frucht, Soja"],
+["Taiyaki","A Rift in Time",2,"Dessert","Sandfisch, Bohnen"],
+["Vanilla Macarons","A Rift in Time",3,"Dessert","Vanille, Eier, Mandeln"],
+["Ambrosia Smoothie","The Storybook Vale",2,"Vorspeise","Naturjoghurt, Ambrosia"],
+["Baked Feta and Olives","The Storybook Vale",2,"Vorspeise","Flyleaf-Feta, Oliven"],
+["Cape Gooseberry Smoothie","The Storybook Vale",2,"Vorspeise","Kap-Stachelbeere, Naturjoghurt"],
+["Faerie Rye Crackers","The Storybook Vale",1,"Vorspeise","Feenroggen"],
+["Golden Apple Smoothie","The Storybook Vale",2,"Vorspeise","Goldener Apfel, Naturjoghurt"],
+["Greek Potatoes","The Storybook Vale",5,"Vorspeise","Kartoffel, beliebige Frucht, Knoblauch, Salzkristall, beliebiges Gewürz"],
+["Honeydew Smoothie","The Storybook Vale",2,"Vorspeise","Honigmelone, Naturjoghurt"],
+["Lightning Bolt","The Storybook Vale",5,"Vorspeise","2x Blitz-Gewürz, Stygischer Schlammspringer, Neunauge, beliebiges Süßes"],
+["Olympian Tapenade","The Storybook Vale",4,"Vorspeise","Elysisches Getreide, Oliven, Honigmelone, beliebiges Gewürz"],
+["Persimmon Smoothie","The Storybook Vale",2,"Vorspeise","Persimone, Naturjoghurt"],
+["Radicchio Slaw","The Storybook Vale",4,"Vorspeise","Radicchio, Radieschen, Grüne Bohnen, Blumenkohl"],
+["Sauteed Porcini","The Storybook Vale",2,"Vorspeise","Steinpilz, Knoblauch"],
+["Simple Chia Pudding","The Storybook Vale",1,"Vorspeise","Chiasamen"],
+["Sparkling Ambrosia","The Storybook Vale",2,"Vorspeise","Blitz-Gewürz, Ambrosia"],
+["Spiral Strawberry Smoothie","The Storybook Vale",2,"Vorspeise","Spiral-Erdbeere, Naturjoghurt"],
+["Tzatziki","The Storybook Vale",3,"Vorspeise","Gurke, Naturjoghurt, Knoblauch"],
+["A Very Unusual Tea Time","The Storybook Vale",4,"Hauptgericht","Naturjoghurt, Spiral-Erdbeere, Saure Beeren, Salzkristall"],
+["Aquatic Escargot","The Storybook Vale",3,"Hauptgericht","Trompetenschnecke, Knoblauch, Salzkristall"],
+["Arcane Garlic Crab","The Storybook Vale",4,"Hauptgericht","Zauberhut-Einsiedlerkrebs, Knoblauch, Salzkristall, beliebiges Gewürz"],
+["Argossian Pizza","The Storybook Vale",5,"Hauptgericht","Flyleaf-Feta, Elyssian grain, Zwiebel, beliebiges Gemüse, Oliven"],
+["Barley Salad","The Storybook Vale",4,"Hauptgericht","Gerste, Blumenkohl, Radieschen, beliebiges Gewürz"],
+["Cacio e Pepe","The Storybook Vale",3,"Hauptgericht","Flyleaf-Feta, Elysisches Getreide, schwarzer Pfeffer"],
+["Cape Gooseberry Chia Pancakes","The Storybook Vale",4,"Hauptgericht","Weizen, Chiasamen, Shovelbird-Ei, Kap-Stachelbeere"],
+["Caprese Salad","The Storybook Vale",5,"Hauptgericht","Flyleaf-Feta, beliebiges Gemüse, Oliven, Salzkristall, beliebiges Gewürz"],
+["Cauliflower Steak","The Storybook Vale",1,"Hauptgericht","Blumenkohl"],
+["Chia Pudding","The Storybook Vale",4,"Hauptgericht","Chiasamen, Rhabarber, Zimt, beliebiges Süßes"],
+["Chia Seed Bread","The Storybook Vale",3,"Hauptgericht","Weizen, Chiasamen, Shovelbird-Ei"],
+["Chimera Skewer","The Storybook Vale",5,"Hauptgericht","Hippocampus, Trompetenschnecke, Fliegender Fisch, beliebiger Fisch, Rosenkohl"],
+["Electric Radicchio and Persimmon Salad","The Storybook Vale",3,"Hauptgericht","Radicchio, Persimone, Electric spice"],
+["Flying Fish Quenelles","The Storybook Vale",5,"Hauptgericht","Fliegender Fisch, Flyleaf-Feta, Steinpilze, beliebiges Gemüse, beliebiges Milchprodukt"],
+["Garlic Steam Mussels","The Storybook Vale",3,"Hauptgericht","Miesmuschel, Zwiebel, Knoblauch"],
+["Grecian Baked Fish","The Storybook Vale",5,"Hauptgericht","Stygischer Schlammspringer, Elysisches Getreide, Oliven, Salzkristall, Ambrosia"],
+["Greek Salad","The Storybook Vale",5,"Hauptgericht","Gurke, Flyleaf-Feta, Radieschen, beliebiges Gemüse, Oliven"],
+["Green Bean Casserole","The Storybook Vale",3,"Hauptgericht","Grüne Bohnen, Zwiebel, Steinpilz"],
+["Grilled Koi Gyro","The Storybook Vale",5,"Hauptgericht","Koi, Weizen, Gurke, Oliven, beliebiges Gewürz"],
+["Hermit Crab Pasta","The Storybook Vale",3,"Hauptgericht","Zauberhut-Einsiedlerkrebs, Weizen, beliebiges Gewürz"],
+["Hippocampus Cepelinai Dumplings","The Storybook Vale",5,"Hauptgericht","Hippocampus, Zwiebel, Kartoffel, Spiral-Erdbeere, schwarzer Pfeffer"],
+["Koi Sashimi","The Storybook Vale",1,"Hauptgericht","Koi"],
+["Lamprey Sashimi","The Storybook Vale",1,"Hauptgericht","Neunauge"],
+["Loaded Breakfast Yogurt","The Storybook Vale",4,"Hauptgericht","Hafer, Naturjoghurt, Spiral-Erdbeere, Ambrosia"],
+["Loaded Golden Apple Porridge","The Storybook Vale",4,"Hauptgericht","Goldener Apfel, 2x Hafer, Ambrosia"],
+["Loaded Honeydew Porridge","The Storybook Vale",4,"Hauptgericht","Honigmelone, 2x Hafer, Ambrosia"],
+["Loaded Persimmon Porridge","The Storybook Vale",4,"Hauptgericht","Persimone, 2x Hafer, Ambrosia"],
+["Loaded Rhubarb Porridge","The Storybook Vale",4,"Hauptgericht","Rhabarber, 2x Hafer, Ambrosia"],
+["Loaded Sea Grape Porridge","The Storybook Vale",4,"Hauptgericht","Meerestraube, 2x Hafer, Ambrosia"],
+["Lupine Cullen Skink","The Storybook Vale",4,"Hauptgericht","Meereswolf, Kartoffel, Zwiebel, Naturjoghurt"],
+["Mussel Risotto","The Storybook Vale",5,"Hauptgericht","Miesmuschel, Reis, Oliven, Knoblauch, beliebiges Gewürz"],
+["Oatmeal","The Storybook Vale",1,"Hauptgericht","Hafer"],
+["Olive Plate","The Storybook Vale",1,"Hauptgericht","Oliven"],
+["Persimmon Chia Pancakes","The Storybook Vale",4,"Hauptgericht","Weizen, Chiasamen, Shovelbird-Ei, Persimone"],
+["Randichio-Stuffed Porcini","The Storybook Vale",3,"Hauptgericht","Steinpilze, Radicchio, schwarzer Pfeffer"],
+["Roasted Barley and Veggies","The Storybook Vale",5,"Hauptgericht","Gerste, Rosenkohl, Flyleaf-Feta, Zwiebel, beliebiges Gemüse"],
+["Roasted Brussels Sprouts","The Storybook Vale",2,"Hauptgericht","Rosenkohl, Knoblauch"],
+["Roasted Green Beans","The Storybook Vale",2,"Hauptgericht","Grüne Bohnen, Knoblauch"],
+["Salt-Baked Sea Wolf","The Storybook Vale",2,"Hauptgericht","Meereswolf, Salzkristall"],
+["Salt-Pickled Cauliflower","The Storybook Vale",3,"Hauptgericht","Blumenkohl, Salzkristall, beliebiges Gewürz"],
+["Salt-Pickled Ginger","The Storybook Vale",3,"Hauptgericht","Ingwer, Salzkristall, beliebiges Gewürz"],
+["Salt-Pickled Green Beans","The Storybook Vale",3,"Hauptgericht","Grüne Bohnen, Salzkristall, beliebiges Gewürz"],
+["Salt-Pickled Radicchio","The Storybook Vale",3,"Hauptgericht","Radicchio, Salzkristall, beliebiges Gewürz"],
+["Salt-Pickled Radish","The Storybook Vale",3,"Hauptgericht","Radieschen, Salzkristall, beliebiges Gewürz"],
+["Salt-Pickled Grapes","The Storybook Vale",3,"Hauptgericht","Trauben, Salzkristall, beliebiges Gewürz"],
+["Scottish Porridge","The Storybook Vale",2,"Hauptgericht","Hafer, beliebige Frucht"],
+["Sea Grape Chia Pancakes","The Storybook Vale",4,"Hauptgericht","Weizen, Chiasamen, Shovelbird-Ei, Meerestrauben"],
+["Seaweed Salad","The Storybook Vale",4,"Hauptgericht","Radieschen, Meerestrauben, schwarzer Pfeffer, beliebiges Gemüse"],
+["Shovel Bird Eggs Benedict","The Storybook Vale",4,"Hauptgericht","Elysisches Getreide, Shovelbird-Ei, Spiral-Erdbeere, Salzkristall"],
+["Soda Bread and Feta","The Storybook Vale",3,"Hauptgericht","Weizen, Flyleaf-Feta, Salzkristall"],
+["Spanakopita","The Storybook Vale",5,"Hauptgericht","Zwiebel, Spinat, Flyleaf-Feta, Knoblauch, beliebiges Gewürz"],
+["Spiral Strawberry Chia Pancakes","The Storybook Vale",4,"Hauptgericht","Weizen, Chiasamen, Shovelbird-Ei, Spiral-Erdbeere"],
+["Sprout-Stuffed Porcini","The Storybook Vale",3,"Hauptgericht","Steinpilze, Rosenkohl, schwarzer Pfeffer"],
+["Squash-Stuffed Porcini","The Storybook Vale",3,"Hauptgericht","Steinpilze, Ringkürbis, schwarzer Pfeffer"],
+["Squid Sashimi","The Storybook Vale",1,"Hauptgericht","Tintenfisch"],
+["Steamed Mussels","The Storybook Vale",1,"Hauptgericht","Mussels"],
+["Stuffed Ring Squash","The Storybook Vale",3,"Hauptgericht","Ringkürbis, Knoblauch, Ambrosia"],
+["Tuna Sashimi","The Storybook Vale",1,"Hauptgericht","Thunfisch"],
+["Aphrodite's Delight","The Storybook Vale",2,"Dessert","Goldener Apfel, Ambrosia"],
+["Cape Gooseberry Sour Fondue","The Storybook Vale",2,"Dessert","Kap-Stachelbeere, Saure Beeren"],
+["Cinnamon Cake","The Storybook Vale",4,"Dessert","Weizen, Shovel Bird Egg, Naturjoghurt, Zimt"],
+["Cinnamon Cookies","The Storybook Vale",4,"Dessert","Weizen, Naturjoghurt, Zimt, beliebiges Süßes"],
+["Golden Apple Pie","The Storybook Vale",3,"Dessert","Weizen, Shovelbird-Ei, Goldener Apfel"],
+["Honeydew Sour Fondue","The Storybook Vale",2,"Dessert","Honigmelone, Saure Beeren"],
+["Lightning Cake","The Storybook Vale",4,"Dessert","Weizen, Shovelbird-Ei, Naturjoghurt, Blitz-Gewürz"],
+["Lightning Cookies","The Storybook Vale",4,"Dessert","Weizen, Naturjoghurt, Blitz-Gewürz, beliebiges Süßes"],
+["Merryweather's Gingersnaps","The Storybook Vale",5,"Dessert","Feenroggen, Shovelbird-Ei, Ingwer, Muskat, Saure Beeren"],
+["Nutmeg Cake","The Storybook Vale",4,"Dessert","Weizen, Shovelbird-Ei, Naturjoghurt, Muskat"],
+["Nutmeg Cookies","The Storybook Vale",4,"Dessert","Weizen, Naturjoghurt, Muskat, beliebiges Süßes"],
+["Persimmon Pie","The Storybook Vale",3,"Dessert","Weizen, Shovelbird-Ei, Persimone"],
+["Persimmon Sour Fondue","The Storybook Vale",2,"Dessert","Persimone, Saure Beeren"],
+["Rice Pudding","The Storybook Vale",3,"Dessert","Reis, Hafer, Vanille"],
+["Sour Berry Dessert","The Storybook Vale",2,"Dessert","Ambrosia, Saure Beeren"],
+["Sour Berry Pie","The Storybook Vale",3,"Dessert","Weizen, Shovel Bird Egg, Saure Beeren"],
+["Spicy Yogurt","The Storybook Vale",2,"Dessert","Naturjoghurt, beliebiges Gewürz"],
+["Spiral Strawberry Pie","The Storybook Vale",3,"Dessert","Weizen, Shovel Bird Egg, Spiral-Erdbeere"],
+["Spiral Strawberry Sour Fondue","The Storybook Vale",2,"Dessert","Spiral-Erdbeere, Saure Beeren"],
+["Strawberry Rhubarb Pie","The Storybook Vale",4,"Dessert","Weizen, Naturjoghurt, Rhabarber, Spiral-Erdbeere"],
+["Underworld Cake","The Storybook Vale",5,"Dessert","Feenroggen, Shovel Bird Egg, Naturjoghurt, Muskat, Ambrosia"],
+["Vanilla Yogurt","The Storybook Vale",2,"Dessert","Naturjoghurt, Vanille"],
+["Alpine Fishcakes","Wishblossom Ranch",2,"Vorspeise","Dill, Alpine Bass"],
+["Buttermilk Borscht","Wishblossom Ranch",4,"Vorspeise","Beetroot, Dill, Milch, Eier"],
+["Fizzy Nectar Soda","Wishblossom Ranch",2,"Vorspeise","Bonsai Starfruit, Slush-Eis"],
+["Rosehip Honey Tea","Wishblossom Ranch",1,"Vorspeise","Coral Honey"],
+["Scarlet Bouquet Salad","Wishblossom Ranch",1,"Vorspeise","Scarlet Kale"],
+["Smoked Fish Charcuterie Spread","Wishblossom Ranch",4,"Vorspeise","Weizen, Thunfisch, Mountain Whitefish, beliebiger Fisch"],
+["101 Teeny Tiny Dalmation Cupcakes","Wishblossom Ranch",4,"Hauptgericht","Dark Chocolate Coffee Beans, Weizen, Eier, Zuckerrohr"],
+["Afternoon Tea Set","Wishblossom Ranch",4,"Hauptgericht","Dark Chocolate Coffee Beans, Pearly Barley, Pincushion Peach, beliebiges Gemüse"],
+["Baked Whitefish & Roasted Beets","Wishblossom Ranch",2,"Hauptgericht","Beetroot, Mountain Whitefish"],
+["Beet-iful Spaetzle","Wishblossom Ranch",3,"Hauptgericht","Beetroot, Eier, Weizen"],
+["Bread Bowl Pumpkin Soup","Wishblossom Ranch",4,"Hauptgericht","Tigger Fish, Fairy Kamut, Kürbis, Milch"],
+["Button Stew","Wishblossom Ranch",2,"Hauptgericht","Button Mushroom, Karotte"],
+["Eton Mess","Wishblossom Ranch",3,"Hauptgericht","Red Currants, Pincushion Peach, Eier"],
+["Felted Breakfast Spread","Wishblossom Ranch",3,"Hauptgericht","Button Mushroom, Eier, Satin-Finned Betta"],
+["Fishy Pineapple Jelly","Wishblossom Ranch",5,"Hauptgericht","Measuring-Tape Snail, Jellied-Fish, Krabbe, Scarlet Kale, beliebiger Fisch"],
+["Friendly Bento","Wishblossom Ranch",4,"Hauptgericht","Tigger Fish, Scarlet Kale, Coral Honey, beliebiges Gemüse"],
+["Honey Glazed Carrots","Wishblossom Ranch",3,"Hauptgericht","Coral Honey, Karotte, Dill"],
+["Honey Pancakes","Wishblossom Ranch",3,"Hauptgericht","Coral Honey, Weizen, Eier"],
+["Horace's Ham Sandwich","Wishblossom Ranch",3,"Hauptgericht","Pearly Barley, Käse, beliebiges Gemüse"],
+["Jellied Fish Terrine","Wishblossom Ranch",1,"Hauptgericht","Jellied-Fish"],
+["Jellied Salad","Wishblossom Ranch",2,"Hauptgericht","Jellied-Fish, Scarlet Kale"],
+["Kanine Crunchies Cereal","Wishblossom Ranch",2,"Hauptgericht","Pearly Barley, Pincushion Peach"],
+["Pixie Pizza","Wishblossom Ranch",5,"Hauptgericht","Fairy Kamut, Fairy Sprinkles, Button Mushroom, Käse, Tomate"],
+["Scarlet Kale and Cheese Pinwheels","Wishblossom Ranch",3,"Hauptgericht","Scarlet Kale, Käse, Weizen"],
+["Stargazy Pie","Wishblossom Ranch",4,"Hauptgericht","Measuring-Tape Snail, Satin-Finned Betta, Alpine Bass, Weizen"],
+["Vintage Peach Trifle","Wishblossom Ranch",5,"Hauptgericht","Pincushion Peach, Pearly Barley, Milch, Zuckerrohr, beliebige Frucht"],
+["Beauty and the Beetroot Napoleons","Wishblossom Ranch",5,"Dessert","Red Currants, Beetroot, Butter, Eier, Milch"],
+["Beet Brownie Stack","Wishblossom Ranch",3,"Dessert","Beetroot, beliebiges Süßes, Eier"],
+["Beet Sugar Sculpture","Wishblossom Ranch",2,"Dessert","Beetroot, Zuckerrohr"],
+["Fairy Boot Cake","Wishblossom Ranch",5,"Dessert","Fairy Kamut, Coral Honey, Dark Chocolate Coffee Beans, Eier, Butter"],
+["Fairy Bread","Wishblossom Ranch",2,"Dessert","Fairy Kamut, Fairy Sprinkles"],
+["Fairy Wands","Wishblossom Ranch",3,"Dessert","Bonsai Starfruit, Lollipop Fruit, beliebige Frucht"],
+["Pixie Ice Cream Dome Cake","Wishblossom Ranch",4,"Dessert","Fairy Kamut, Fairy Sprinkles, Slush-Eis, Red Currants"],
+["Red Currant Linzer Cookies","Wishblossom Ranch",4,"Dessert","Red Currants, Zuckerrohr, Weizen, Butter"],
+["Red Currant Valley Cakes","Wishblossom Ranch",3,"Dessert","Red Currants, Milch, Eier"],
+["Tigger Tails","Wishblossom Ranch",2,"Dessert","Lollipop Fruit, Fairy Sprinkles"],
+["Honeyglow Elixir","Honeyglow Woods",5,"Quest-Gericht","Sweet Chestnut, Parsnip, Tree Resin, Fog Dust (Questgegenstand), Golden Honey"],
+["Fog-Busting Potion","Honeyglow Woods",5,"Quest-Gericht","Juniper Berry, Golden Pattypan, Plush Fish, Fog Dust (Questgegenstand), Truffle"],
+["Tummy Tonic","Honeyglow Woods",3,"Quest-Gericht","Jasmintee-Blätter, Minze, Ingwer"],
+["Pooh's Honey Garden Pie","Honeyglow Woods",5,"Quest-Gericht","beliebiges Getreide, Pooh's Golden Honey (Questgegenstand), Golden Pattypan, Parsnip, Karotte"],
+["Blustery Day Soup","Honeyglow Woods",4,"Vorspeise","beliebiges Protein, Pilz, Truffle, Golden Honey"],
+["Honeycrunch Bar","Honeyglow Woods",2,"Vorspeise","Sweet Chestnuts, Golden Honey"],
+["Sweet Acorn Porridge","Honeyglow Woods",3,"Vorspeise","Acorn Snail, beliebige Frucht, beliebiges Getreide"],
+["Warm Milk & Honey","Honeyglow Woods",2,"Vorspeise","Milch, Golden Honey"],
+["Foresty Quiche","Honeyglow Woods",5,"Hauptgericht","beliebiger Fisch, beliebiges Protein, Juniper Berry, Truffle, Golden Pattypan"],
+["Honey-Glazed Plush Fish","Honeyglow Woods",3,"Hauptgericht","Plush Fish, beliebiges Gemüse, Golden Honey"],
+["Rabbit's Garden Pie","Honeyglow Woods",5,"Hauptgericht","Golden Pattypan, Parsnip, Pufflebud Pods, Karotte, beliebiges Getreide"],
+["Toasted Picnic Sandwich","Honeyglow Woods",5,"Hauptgericht","Golden Honey, Parsnip, beliebiges Protein, Tree Resin, beliebiges Gewürz"],
+["Brunchfast","Honeyglow Woods",4,"Dessert","Sweet Jelly, Butter, Eier, beliebige Frucht"],
+["Honey Macarons","Honeyglow Woods",4,"Dessert","Golden Honey, Sweet Jelly, beliebiges Getreide, Sweet Chestnuts"],
+["Honey Triffle","Honeyglow Woods",4,"Dessert","Pufflebud Pods, Golden Honey, Tree Resin, Juniper Berry"],
+["Pooh's Birthday Cake","Honeyglow Woods",5,"Dessert","Golden Honey, beliebiges Süßes, beliebiges Protein, beliebige Frucht, beliebiges Getreide"]];
+const initial=["Dreamlight Valley|Hauptplatz|Eichhörnchen|Klassisch", "Dreamlight Valley|Hauptplatz|Eichhörnchen|Rot", "Dreamlight Valley|Hauptplatz|Eichhörnchen|Grau", "Dreamlight Valley|Hauptplatz|Eichhörnchen|Schwarz", "Dreamlight Valley|Friedliche Wiese|Kaninchen|Klassisch", "Dreamlight Valley|Friedliche Wiese|Kaninchen|Schwarz", "Dreamlight Valley|Friedliche Wiese|Kaninchen|Braun", "A Rift in Time|Grasland|Capybara|Klassisch (orange/rotbraun)", "A Rift in Time|Ebene|Kobra|Klassisch (lila/blau/schwarz wirkend)"];
+let owned=JSON.parse(localStorage.getItem('heike-ddlv-owned-v2')||'null')||Object.fromEntries(initial.map(k=>[k,true]));
+const $=s=>document.querySelector(s), key=x=>x.slice(0,4).join('|');
+let timeMode='now'; let fed=JSON.parse(localStorage.getItem('heike-ddlv-fed-v1')||'{}');
+const dayNames=['So','Mo','Di','Mi','Do','Fr','Sa']; const todayKey=()=>new Date().toLocaleDateString('sv-SE');
+if(localStorage.getItem('heike-ddlv-fed-day')!==todayKey()){fed={};localStorage.setItem('heike-ddlv-fed-v1','{}');localStorage.setItem('heike-ddlv-fed-day',todayKey())}
+function scheduleStatus(data){if(!data||!data.week)return {today:false,now:false,label:'Zeitplan fehlt'};const d=new Date().getDay(),mins=new Date().getHours()*60+new Date().getMinutes(),slot=data.week[d];if(slot==null)return {today:false,now:false,label:'Heute nicht da',weather:data.weather};const ranges=Array.isArray(slot[0])?slot:[slot];const now=ranges.some(r=>mins>=r[0]&&mins<r[1]);const fmt=n=>String(Math.floor(n/60)%24).padStart(2,'0')+':'+String(n%60).padStart(2,'0');const label=ranges.map(r=>r[0]===0&&r[1]===1440?'ganztägig':fmt(r[0])+'–'+(r[1]===1440?'24:00':fmt(r[1]))+' Uhr').join(' & ');return {today:true,now,label,weather:data.weather};}
+function setTimeMode(m){timeMode=m;['now','today','all'].forEach(x=>$('#tm-'+x).classList.toggle('active',x===m));renderCritters()}
+window.toggleFed=k=>{fed[k]=!fed[k];localStorage.setItem('heike-ddlv-fed-v1',JSON.stringify(fed));renderCritters()}
+document.addEventListener('DOMContentLoaded',()=>{
+  ['now','today','all'].forEach(m=>{
+    const b=document.getElementById('tm-'+m);
+    if(b) b.addEventListener('click',()=>setTimeMode(m));
+  });
+});
+
+
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function fillWorlds(){let ws=[...new Set(critters.map(x=>x[0]))]; $('#cw').innerHTML='<option value="all">Alle Welten</option>'+ws.map(x=>`<option>${esc(x)}</option>`).join(''); fillAreas()}
+function fillAreas(){let w=$('#cw').value,as=[...new Set(critters.filter(x=>w==='all'||x[0]===w).map(x=>x[1]))];$('#ca').innerHTML='<option value="all">Alle Gebiete</option>'+as.map(x=>`<option>${esc(x)}</option>`).join('')}
+function renderCritters(){
+  const w=$('#cw').value, area=$('#ca').value, sf=$('#cs').value, q=$('#cq').value.toLowerCase();
+  let f=critters.filter(x =>
+    (w==='all'||x[0]===w) &&
+    (area==='all'||x[1]===area) &&
+    (!q||x.join(' ').toLowerCase().includes(q))
+  );
+  f=f.filter(x => sf==='all' || (sf==='owned'&&owned[key(x)]) || (sf==='need'&&!owned[key(x)]));
+  if(timeMode==='today') f=f.filter(x=>scheduleStatus(x[6]).today);
+  if(timeMode==='now') f=f.filter(x=>scheduleStatus(x[6]).now);
+
+  $('#ccount').textContent=f.length;
+  const n=new Date();
+  $('#nowInfo').textContent=(timeMode==='now'?'Jetzt verfügbar':timeMode==='today'?'Heute verfügbar':'Alle Begleiter')
+    +' · '+dayNames[n.getDay()]+' '+n.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
+
+  const list=$('#clist');
+  list.innerHTML='';
+  if(!f.length){
+    list.innerHTML='<div class="card">Keine passenden Begleiter in diesem Zeitfenster.</div>';
+    return;
+  }
+
+  f.forEach(x=>{
+    const k=key(x);
+    const card=document.createElement('div');
+    card.className='card'+(owned[k]?' owned':'');
+    card.innerHTML=
+      '<div class="name">'+esc(x[2])+' – '+esc(x[3])+'</div>'+
+      '<span class="tag">'+esc(x[0])+'</span><span class="tag">'+esc(x[1])+'</span>'+
+      '<p><b>Lieblingsfutter:</b> '+esc(x[4])+
+      '<br><b>Annäherung:</b> '+esc(x[5])+
+      '<br><b>Heute:</b> '+esc(scheduleStatus(x[6]).label)+(scheduleStatus(x[6]).weather?'<br><b>Zusatz:</b> '+esc(scheduleStatus(x[6]).weather):'')+'</p>';
+
+    const actions=document.createElement('div');
+    actions.style.cssText='display:flex;gap:7px;flex-wrap:wrap';
+
+    const ownBtn=document.createElement('button');
+    ownBtn.type='button';
+    ownBtn.className=owned[k]?'yes':'';
+    ownBtn.textContent=owned[k]?'✓ Habe ich schon':'○ Noch nicht';
+    ownBtn.addEventListener('click',()=>toggleCritter(k));
+
+    const fedBtn=document.createElement('button');
+    fedBtn.type='button';
+    fedBtn.className=fed[k]?'yes':'';
+    fedBtn.textContent=fed[k]?'✓ Heute gefüttert':'○ Heute noch nicht gefüttert';
+    fedBtn.addEventListener('click',()=>toggleFed(k));
+
+    actions.append(ownBtn,fedBtn);
+    card.appendChild(actions);
+    list.appendChild(card);
+  });
+}
+window.toggleCritter=k=>{owned[k]=!owned[k];localStorage.setItem('heike-ddlv-owned-v2',JSON.stringify(owned));renderCritters();updateProgress()}
+function updateProgress(){let all=critters.map(key),have=all.filter(k=>owned[k]).length,pct=all.length?Math.round(have/all.length*100):0;$('#ptext').textContent=`${have} von ${all.length} Begleiter-Varianten (${pct}%)`;$('#pbar').style.width=pct+'%'}
+$('#btnExport').onclick=()=>{let blob=new Blob([JSON.stringify(owned,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='dreamlight-sammlung-backup.json';a.click();URL.revokeObjectURL(a.href)}
+$('#btnImport').onclick=()=>$('#fileImport').click()
+$('#fileImport').onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let data=JSON.parse(r.result);if(typeof data!=='object'||Array.isArray(data))throw 0;owned=data;localStorage.setItem('heike-ddlv-owned-v2',JSON.stringify(owned));renderCritters();updateProgress();alert('Sammlung erfolgreich importiert.')}catch{alert('Diese Datei sieht nicht wie ein gültiges Backup aus.')}};r.readAsText(f);e.target.value=''}
+function renderFind(){let q=$('#fq').value.trim().toLowerCase();let r=resources.map(x=>[...x]).concat(flowers.map(x=>[x[0],'Blume','Dreamlight Valley / DLC',x[1],'Wild wachsend','']));let f=r.filter(x=>!q||x.join(' ').toLowerCase().includes(q));$('#flist').innerHTML=f.slice(0,200).map(x=>`<div class="card"><div class="name">${esc(x[0])}</div><span class="tag">${esc(x[1])}</span><span class="tag">${esc(x[2])}</span><p><b>Fundort:</b> ${esc(x[3])}<br><b>So bekommst du es:</b> ${esc(x[4])}${x[5]?`<br><b>Verkauf:</b> ${esc(x[5])} Münzen`:''}</p></div>`).join('')}
+function renderStalls(){let q=$('#sq').value.toLowerCase();let f=stalls.filter(x=>!q||x.join(' ').toLowerCase().includes(q));$('#slist').innerHTML=f.map(x=>`<div class="card"><div class="name">${esc(x[1])}</div><span class="tag">${esc(x[0])}</span><p><b>Samen/Angebot:</b> ${esc(x[2])}</p></div>`).join('')||'<div class="card">Keine Treffer.</div>'}
+function fillMealWorlds(){let ws=[...new Set(meals.map(x=>x[1]))];$('#mw').innerHTML='<option value="all">Alle Welten</option>'+ws.map(x=>`<option>${esc(x)}</option>`).join('')}
+function renderMeals(){
+  const w=$('#mw').value, st=$('#ms').value, cat=$('#mc').value, q=$('#mq').value.toLowerCase();
+  let f=meals.filter(x=>
+    (w==='all'||x[1]===w) &&
+    (st==='all'||String(x[2])===st) &&
+    (cat==='all'||x[3]===cat) &&
+    (!q||x.join(' ').toLowerCase().includes(q))
+  );
+  $('#mcount').textContent=f.length;
+  $('#mlist').innerHTML=f.map(x=>`<div class="card"><div class="name">${esc(x[0])}</div><span class="tag">${esc(x[1])}</span><span class="tag">${'★'.repeat(x[2])}</span><span class="tag">${esc(x[3])}</span><p><b>Zutaten:</b> ${esc(x[4])}</p></div>`).join('')||'<div class="card">Keine Treffer.</div>'}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('main section').forEach(x=>x.classList.add('hidden'));$('#'+b.dataset.tab).classList.remove('hidden')})
+$('#cw').onchange=()=>{fillAreas();renderCritters()};$('#ca').onchange=$('#cs').onchange=renderCritters;$('#cq').oninput=renderCritters;$('#fq').oninput=renderFind;$('#sq').oninput=renderStalls;$('#mq').oninput=renderMeals;$('#mw').onchange=$('#ms').onchange=$('#mc').onchange=renderMeals;
+fillWorlds();fillMealWorlds();renderCritters();renderFind();renderStalls();renderMeals();updateProgress();
+</script></body></html>
